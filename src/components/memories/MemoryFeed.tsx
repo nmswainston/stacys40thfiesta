@@ -59,7 +59,7 @@ export default function MemoryFeed() {
         {memories.map((memory) => (
           <div 
             key={memory.id} 
-            className="bg-transparent p-4 space-y-3 border border-secondary/20 rounded-lg hover:border-secondary/40 transition"
+            className="frost-layer-light space-y-3"
           >
             {memory.photoUrl && (
               <img 

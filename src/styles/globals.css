@@ -87,19 +87,153 @@ html {
 }
 
 /***** Spanish rodeo vibe helpers *****/
-/* Card and component styles - neutralized for floating paperless design */
-.card-base {
-  border-radius: 0;       /* remove rounding */
-  padding: 0;             /* spacing handled by utilities */
-  box-shadow: none;       /* remove card feel */
-  background-color: transparent;
-  backdrop-filter: none;
+/* Glassmorphism Card System - Enhanced readability over illustrated background */
+
+/* Base glass panel with WCAG AA contrast - Clear Frost Effect */
+.glass-panel {
+  /* Clear frost background - brighter and more transparent */
+  background: rgba(255, 255, 255, 0.65);
+  
+  /* Enhanced glassmorphism blur for frosted glass effect */
+  backdrop-filter: blur(16px) saturate(160%) brightness(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%) brightness(110%);
+  
+  /* Soft white border for frost effect */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1rem; /* 16px */
+  
+  /* Soft shadow with bright inset highlight for icy appearance */
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.06),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 20px 0 rgba(255, 255, 255, 0.3);
+  
+  /* Fallback for browsers without backdrop-filter */
+  @supports not (backdrop-filter: blur(16px)) {
+    background: rgba(255, 255, 255, 0.88);
+  }
 }
 
+/* Card base - applies clear frost glass effect to content tiles */
+.card-base {
+  /* Clear frost background */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px) saturate(160%) brightness(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%) brightness(110%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 0.75rem; /* 12px - slightly smaller than panels */
+  
+  box-shadow: 
+    0 2px 4px -1px rgba(0, 0, 0, 0.05),
+    0 1px 2px -1px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 15px 0 rgba(255, 255, 255, 0.25);
+  
+  /* Spacing for content */
+  padding: 1.5rem; /* 24px */
+  
+  /* Smooth transitions */
+  transition: all 0.2s ease-in-out;
+  
+  /* Fallback for browsers without backdrop-filter */
+  @supports not (backdrop-filter: blur(16px)) {
+    background: rgba(255, 255, 255, 0.88);
+  }
+}
+
+/* Card hover state - enhanced frost effect */
+.card-base:hover {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 6px 12px -2px rgba(0, 0, 0, 0.06),
+    0 3px 6px -2px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95),
+    inset 0 0 20px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Card component - clear frost effect */
 .card {
-  background-color: transparent;
-  box-shadow: none;
-  border: 0;
+  /* Clear frost background */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px) saturate(160%) brightness(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%) brightness(110%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 0.75rem;
+  
+  box-shadow: 
+    0 2px 4px -1px rgba(0, 0, 0, 0.05),
+    0 1px 2px -1px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 15px 0 rgba(255, 255, 255, 0.25);
+  
+  padding: 1.5rem;
+  transition: all 0.2s ease-in-out;
+  
+  /* Fallback for browsers without backdrop-filter */
+  @supports not (backdrop-filter: blur(16px)) {
+    background: rgba(255, 255, 255, 0.88);
+  }
+}
+
+/* Nested frost layer - for sections inside glass panels */
+.frost-layer {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(8px) saturate(140%) brightness(105%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%) brightness(105%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
+  
+  box-shadow: 
+    0 1px 3px -1px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.8),
+    inset 0 0 12px 0 rgba(255, 255, 255, 0.2);
+  
+  padding: 1.25rem;
+  transition: all 0.2s ease-in-out;
+  
+  /* Fallback for browsers without backdrop-filter */
+  @supports not (backdrop-filter: blur(8px)) {
+    background: rgba(255, 255, 255, 0.75);
+  }
+}
+
+/* Light frost layer - for list items and subtle backgrounds */
+.frost-layer-light {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px) saturate(130%) brightness(103%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%) brightness(103%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.5rem;
+  
+  box-shadow: 
+    0 1px 2px -1px rgba(0, 0, 0, 0.03),
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.7);
+  
+  padding: 0.75rem 1rem;
+  transition: all 0.15s ease-in-out;
+  
+  /* Fallback for browsers without backdrop-filter */
+  @supports not (backdrop-filter: blur(6px)) {
+    background: rgba(255, 255, 255, 0.65);
+  }
+}
+
+/* Hover states for frost layers */
+.frost-layer:hover {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.frost-layer-light:hover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .link {
@@ -279,7 +413,7 @@ html {
 }
 
 .bg-cream-fade {
-  background: linear-gradient(to bottom, rgba(249, 244, 231, 0.92), rgba(249, 244, 231, 0.78) 40%, rgba(249, 244, 231, 0) 100%);
+  background: transparent;
 }
 
 /* Decorative background utilities */
@@ -367,12 +501,7 @@ html {
 }
 
 .bg-western-overlay {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(245, 235, 200, 0.25),
-      rgba(240, 220, 180, 0.45)
-    ),
-    var(--western-bg);
+  background-image: var(--western-bg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -390,21 +519,20 @@ html {
 /* Rope divider: fallback style without rope-tile.svg */
 .rule-rope {
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(160, 116, 82, 0.5) 20%, rgba(160, 116, 82, 0.5) 80%, transparent);
+  background: rgba(160, 116, 82, 0.5);
   margin: 1rem 0;
 }
 
 /* Larger variant for hero or section tops */
 .rule-rope-lg {
   height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(160, 116, 82, 0.6) 20%, rgba(160, 116, 82, 0.6) 80%, transparent);
+  background: rgba(160, 116, 82, 0.6);
   margin: 1.5rem 0;
   filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.08));
 }
 
 .bg-denim {
-  background: linear-gradient(to bottom right, rgba(34,58,85,.95), rgba(45,75,110,.95));
-  background-size: cover;
+  background: transparent;
 }
 
 /* Global body background - commented out to avoid conflicts with .bg-western-overlay */

@@ -10,14 +10,14 @@ export default function Memories() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left side: Form */}
           <div>
-            <GlassPanel>
+            <GlassPanel className="p-6">
               <MemoryForm />
             </GlassPanel>
           </div>
 
           {/* Right side: Feed */}
           <div>
-            <GlassPanel>
+            <GlassPanel className="p-6">
               <MemoryFeed />
             </GlassPanel>
           </div>

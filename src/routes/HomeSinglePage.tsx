@@ -179,30 +179,8 @@ export default function HomeSinglePage() {
                   </div>
                 </div>
 
-                {/* Horseshoe Divider - Inline SVG */}
-                <div className="my-8 md:my-10 flex items-center justify-center text-secondary" aria-hidden="true">
-                  <div className="hidden md:block flex-1 h-px bg-secondary/30 md:max-w-[40%]" />
-                  <svg 
-                    className="mx-4 w-12 h-12 opacity-90" 
-                    viewBox="0 0 100 100" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path 
-                      d="M50 85C50 85 30 75 30 50C30 25 40 15 50 15C60 15 70 25 70 50C70 75 50 85 50 85Z" 
-                      stroke="currentColor" 
-                      strokeWidth="4" 
-                      fill="none"
-                    />
-                    <circle cx="35" cy="45" r="3" fill="currentColor" />
-                    <circle cx="65" cy="45" r="3" fill="currentColor" />
-                    <circle cx="35" cy="60" r="3" fill="currentColor" />
-                    <circle cx="65" cy="60" r="3" fill="currentColor" />
-                    <circle cx="35" cy="75" r="3" fill="currentColor" />
-                    <circle cx="65" cy="75" r="3" fill="currentColor" />
-                  </svg>
-                  <div className="hidden md:block flex-1 h-px bg-secondary/30 md:max-w-[40%]" />
-                </div>
+                {/* Ornament Divider */}
+                <div className="rule-ornate mt-6 mb-8 mx-auto" aria-hidden="true" />
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
                   <img
@@ -254,7 +232,7 @@ export default function HomeSinglePage() {
               </div>
               <div className="relative grid md:grid-cols-3 gap-6 mt-8">
                 {site.agenda.map((s, i) => (
-                  <article key={i} className="bg-transparent p-6 border border-secondary/20 rounded-lg hover:border-secondary/40 transition focus-within:ring-2 focus-within:ring-primary/50">
+                  <article key={i} className="card-base focus-within:ring-2 focus-within:ring-primary/50">
                     <div className="text-2xl" role="img" aria-label={`${s.title} icon`}>
                       {s.icon}
                     </div>
@@ -329,7 +307,7 @@ export default function HomeSinglePage() {
               </div>
               <div className="relative grid md:grid-cols-4 gap-4 mt-8">
                 {site.stay.amenities.map((amenity, i) => (
-                  <div key={i} className="bg-transparent p-4 border border-secondary/20 rounded-lg text-center hover:border-secondary/40 transition">
+                  <div key={i} className="frost-layer text-center">
                     <p className="text-sm font-semibold font-body tracking-normal">{amenity}</p>
                   </div>
                 ))}
@@ -365,10 +343,10 @@ export default function HomeSinglePage() {
                 </p>
               </div>
               <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
-                <div className="bg-transparent p-6 border border-secondary/20 rounded-lg">
+                <div className="card-base">
                   <MemoryForm />
                 </div>
-                <div className="bg-transparent p-6 border border-secondary/20 rounded-lg">
+                <div className="card-base">
                   <MemoryFeed />
                 </div>
               </div>
@@ -399,7 +377,7 @@ export default function HomeSinglePage() {
                 {/* Left Side: Sign Up Form */}
                 <div className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="bg-transparent p-5 border border-secondary/20 rounded-lg hover:border-secondary/40 transition">
+                    <div className="frost-layer">
                       <h3 className="text-lg font-display font-bold text-primary flex items-center gap-2 tracking-wide">
                         <span role="img" aria-label="car">{site.sections.carpool.offeringCard.icon}</span>
                         <span>{site.sections.carpool.offeringCard.title}</span>
@@ -409,7 +387,7 @@ export default function HomeSinglePage() {
                       </p>
                     </div>
 
-                    <div className="bg-transparent p-5 border border-secondary/20 rounded-lg hover:border-secondary/40 transition">
+                    <div className="frost-layer">
                       <h3 className="text-lg font-display font-bold text-primary flex items-center gap-2 tracking-wide">
                         <span role="img" aria-label="raising hand">{site.sections.carpool.needingCard.icon}</span>
                         <span>{site.sections.carpool.needingCard.title}</span>
@@ -420,7 +398,7 @@ export default function HomeSinglePage() {
                     </div>
                   </div>
 
-                  <div className="bg-transparent p-6 border border-secondary/20 rounded-lg">
+                  <div className="card-base">
                     <h3 className="text-2xl font-display font-bold mb-6 text-primary border-b-2 border-secondary/30 pb-3 tracking-wide">{site.sections.carpool.formHeading}</h3>
                     <CarpoolForm />
                   </div>

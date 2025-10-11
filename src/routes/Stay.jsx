@@ -38,7 +38,7 @@ export default function Stay() {
       <section className="mx-auto max-w-6xl p-6 md:p-10">
         <div className="grid gap-4 md:grid-cols-4">
           {site.stay.amenities.slice(0, 8).map((a, i) => (
-            <div key={i} className="rounded-2xl backdrop-blur p-4 border-2 border-brand-200 bg-cream-50">
+            <div key={i} className="card-base text-center">
               <p className="text-sm font-semibold">{a}</p>
             </div>
           ))}
@@ -52,7 +52,7 @@ export default function Stay() {
           {photos.map((src, i) => (
             <button
               key={i}
-              className="group relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-brand-200 bg-brand-200"
+              className="group relative aspect-[4/3] overflow-hidden rounded-2xl frost-layer-light"
               onClick={() => window.open(src, "_blank")}
               aria-label={`Open photo ${i + 1}`}
             >
@@ -76,7 +76,7 @@ export default function Stay() {
               {site.stay.aboutSection.description}
             </p>
           </div>
-          <div className="rounded-2xl border-2 border-brand-200 p-4 backdrop-blur bg-cream-50">
+          <div className="card-base">
             <h4 className="font-semibold">{site.stay.quickLinks.heading}</h4>
             <ul className="mt-2 space-y-2 text-sm">
               {site.stay.quickLinks.links.map((link, i) => (
@@ -93,7 +93,7 @@ export default function Stay() {
 
       {/* CTA */}
       <section className="mx-auto max-w-6xl p-6 md:p-10">
-        <div className="rounded-3xl border-2 border-brand-300 bg-brand-200 p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="glass-panel p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
             <h3 className="text-xl md:text-2xl font-semibold">{site.stay.ctaSection.heading}</h3>
             <p className="text-ink/80 text-sm md:text-base">{site.stay.ctaSection.description}</p>

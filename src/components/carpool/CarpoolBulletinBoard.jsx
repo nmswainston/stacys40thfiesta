@@ -35,7 +35,7 @@ export default function CarpoolBulletinBoard() {
 
   if (loading) {
     return (
-      <div className="bg-transparent p-8 text-center border border-secondary/20 rounded-xl">
+      <div className="card-base text-center">
         <p className="text-text-dark font-body">{b.loadingText}</p>
       </div>
     );
@@ -43,7 +43,7 @@ export default function CarpoolBulletinBoard() {
 
   if (error) {
     return (
-      <div className="bg-transparent p-8 text-center border border-secondary/20 rounded-xl">
+      <div className="card-base text-center">
         <p className="text-red-600 font-body mb-2">{b.errorText}</p>
         <p className="text-sm text-text-dark/70 font-body">{b.errorSubtext}</p>
       </div>
@@ -51,7 +51,7 @@ export default function CarpoolBulletinBoard() {
   }
 
   return (
-    <div className="bg-transparent border border-secondary/20 rounded-xl overflow-hidden">
+    <div className="glass-panel overflow-hidden p-0">
       {/* Bulletin Board Header */}
       <div className="bg-primary px-6 py-4 text-center border-b-2 text-text-light border-secondary">
         <h3 className="font-display text-2xl font-bold flex items-center justify-center gap-3">
@@ -62,9 +62,9 @@ export default function CarpoolBulletinBoard() {
         <p className="text-sm mt-1 font-body opacity-80">{b.subheading}</p>
       </div>
 
-      <div className="p-6 space-y-5 bg-transparent">
+      <div className="p-6 space-y-5">
         {/* Need a Ride Section */}
-        <div className="bg-transparent p-5 border border-secondary/20 rounded-lg">
+        <div className="frost-layer">
           <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-secondary/30">
             <span className="text-2xl" role="img" aria-label="Need a ride">🙋</span>
             <h4 className="font-display text-xl font-bold text-primary">
@@ -81,7 +81,7 @@ export default function CarpoolBulletinBoard() {
               {riders.map((rider, index) => (
                 <li
                   key={index}
-                  className="flex items-center gap-3 rounded-lg px-4 py-3 border border-secondary/20 hover:border-secondary/40 transition-colors bg-transparent"
+                  className="frost-layer-light flex items-center gap-3"
                 >
                   <span className="text-primary text-lg font-bold">▸</span>
                   <span className="font-body font-semibold text-text-dark text-base">
@@ -94,7 +94,7 @@ export default function CarpoolBulletinBoard() {
         </div>
 
         {/* Offering a Ride Section */}
-        <div className="bg-transparent p-5 border border-secondary/20 rounded-lg">
+        <div className="frost-layer">
           <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-secondary/30">
             <span className="text-2xl" role="img" aria-label="Offering rides">🚗</span>
             <h4 className="font-display text-xl font-bold text-primary">
@@ -111,7 +111,7 @@ export default function CarpoolBulletinBoard() {
               {drivers.map((driver, index) => (
                 <li
                   key={index}
-                  className="flex items-center justify-between gap-3 rounded-lg px-4 py-3 border border-secondary/20 hover:border-secondary/40 transition-colors bg-transparent"
+                  className="frost-layer-light flex items-center justify-between gap-3"
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-primary text-lg font-bold">▸</span>

@@ -6,7 +6,7 @@ export default function Faq(){
   return (
     <section className="bg-transparent py-14">
       <div className="max-w-4xl mx-auto px-4">
-        <GlassPanel>
+        <GlassPanel className="p-8">
           <div className="text-center mb-10">
             <h2 className="heading-display text-4xl text-ink">{site.faq.heading}</h2>
             <div className="rule-ornate mt-6 mx-auto" />

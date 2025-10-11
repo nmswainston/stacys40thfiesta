@@ -1,0 +1,41 @@
+/* Note: Primary theme colors are defined in globals.css @theme block */
+/* This file provides additional CSS custom properties for legacy compatibility */
+
+:root {
+  /* Hex color values for use in non-Tailwind contexts */
+  --color-cream-hex: #F9F4E7;
+  --color-dusty-red-hex: #C65A4A;
+  --color-rope-brown-hex: #A07452;
+  --color-dusty-pink-hex: #E7A4A2;
+  --color-text-dark-hex: #2E1C14;
+  --color-text-light-hex: #FFFDF9;
+  --color-gold-hex: #D8B46B;
+  
+  /* Semantic aliases (hex format) */
+  --background: #F9F4E7;
+  --primary: #C65A4A;
+  --secondary: #A07452;
+  --accent: #E7A4A2;
+  
+  /* Legacy mappings for backward compatibility */
+  --brand-600: #C65A4A;
+  --brand-700: #A07452;
+  --ink: #2E1C14;
+  --surface: #F9F4E7;
+  --muted: #A07452;
+  --border: #A07452;
+  --gold: #D8B46B;
+  
+  /* Shadows and effects */
+  --ring: 0 0% 0%;
+  --shadow-soft: 0 6px 30px rgba(0, 0, 0, 0.08);
+  
+  /* Font stacks - Old Mexican Rodeo Aesthetic */
+  --font-display: "Rye", serif;
+  --font-body: "Urbanist", ui-sans-serif, sans-serif;
+  --font-accent: "Rancho", cursive;
+  --font-western: "Rye", serif;
+  --font-elegant: "Rancho", cursive;
+  --font-sans: "Urbanist", ui-sans-serif, sans-serif;
+}
+

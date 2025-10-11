@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[dev]
+  command = "vite"
+
+[[redirects]]
+  from = "/.netlify/functions/memories"
+  to = "/.netlify/functions/memories"
+  status = 200
+
+[[redirects]]
+  from = "/.netlify/functions/carpool-list"
+  to = "/.netlify/functions/carpool-list"
+  status = 200

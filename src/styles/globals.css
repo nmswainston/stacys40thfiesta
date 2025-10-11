@@ -1,0 +1,529 @@
+@import "tailwindcss";
+@import "./tokens.css";
+/* Old Mexican Rodeo Fonts - Optimized for Performance */
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Urbanist:wght@400;500;600;700&family=Rancho&display=swap');
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Primary Brand Colors - Exact Specifications */
+  --color-cream: 249 244 231;        /* #F9F4E7 - Warm parchment background */
+  --color-dusty-red: 198 90 74;      /* #C65A4A - Primary accent */
+  --color-rope-brown: 160 116 82;    /* #A07452 - Secondary accent */
+  --color-dusty-pink: 231 164 162;   /* #E7A4A2 - Festive/feminine highlight */
+  --color-text-dark: 46 28 20;       /* #2E1C14 - Dark text */
+  --color-text-light: 255 253 249;   /* #FFFDF9 - Light text */
+  
+  /* Color Scale Variations for cream */
+  --color-cream-50: 253 251 246;
+  --color-cream-100: 249 244 231;
+  --color-cream-200: 244 237 216;
+  --color-cream-300: 239 230 201;
+  --color-cream-400: 234 223 186;
+  
+  /* Color Scale Variations for dusty-red */
+  --color-dusty-red-400: 218 110 94;
+  --color-dusty-red-500: 198 90 74;
+  --color-dusty-red-600: 178 80 64;
+  --color-dusty-red-700: 158 70 54;
+  --color-dusty-red-800: 138 60 44;
+  
+  /* Color Scale Variations for rope-brown */
+  --color-rope-brown-400: 180 136 102;
+  --color-rope-brown-500: 160 116 82;
+  --color-rope-brown-600: 140 96 62;
+  --color-rope-brown-700: 120 86 52;
+  --color-rope-brown-800: 100 76 42;
+  
+  /* Color Scale Variations for dusty-pink */
+  --color-dusty-pink-400: 251 184 182;
+  --color-dusty-pink-500: 231 164 162;
+  --color-dusty-pink-600: 211 144 142;
+  --color-dusty-pink-700: 191 124 122;
+  
+  /* Semantic Color Aliases for Maintainability */
+  --color-background: 249 244 231;    /* cream */
+  --color-primary: 198 90 74;         /* dusty-red */
+  --color-secondary: 160 116 82;      /* rope-brown */
+  --color-accent: 231 164 162;        /* dusty-pink */
+  
+  /* Legacy brand colors mapped to new system (for backward compatibility) */
+  --color-brand-50: 253 251 246;      /* cream-50 */
+  --color-brand-100: 249 244 231;     /* cream-100 */
+  --color-brand-200: 244 237 216;     /* cream-200 */
+  --color-brand-300: 239 230 201;     /* cream-300 */
+  --color-brand-400: 218 110 94;      /* dusty-red-400 */
+  --color-brand-500: 198 90 74;       /* dusty-red-500 */
+  --color-brand-600: 198 90 74;       /* dusty-red-600 */
+  --color-brand-700: 178 80 64;       /* dusty-red-700 */
+  --color-brand-800: 158 70 54;       /* dusty-red-800 */
+  --color-brand-900: 100 76 42;       /* rope-brown-800 */
+  
+  /* Additional semantic mappings */
+  --color-ink: 46 28 20;              /* text-dark */
+  --color-surface: 255 255 255;
+  --color-border: 160 116 82;         /* rope-brown */
+  --color-gold: 216 180 107;          /* Keep gold for decorative elements */
+
+  /* Typography Fonts - Old Mexican Rodeo Aesthetic */
+  --font-family-display: Rye, serif;                    /* Vintage rodeo posters */
+  --font-family-body: Urbanist, ui-sans-serif, system-ui, sans-serif;  /* Clean, readable */
+  --font-family-accent: Rancho, cursive;                /* Handwritten western flair */
+  --font-family-sans: Urbanist, ui-sans-serif, system-ui, sans-serif;
+  
+  /* Legacy font mappings (for backward compatibility) */
+  --font-family-spanish-display: Rye, serif;
+  --font-family-spanish-body: Urbanist, ui-sans-serif, sans-serif;
+  --font-family-spanish-accent: Rancho, cursive;
+}
+
+/* Tailwind v4 - Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Minimal CSS Variables for background images only */
+:root {
+  --western-bg: url('/assets/western-background.svg');
+}
+
+/***** Spanish rodeo vibe helpers *****/
+/* Card and component styles - neutralized for floating paperless design */
+.card-base {
+  border-radius: 0;       /* remove rounding */
+  padding: 0;             /* spacing handled by utilities */
+  box-shadow: none;       /* remove card feel */
+  background-color: transparent;
+  backdrop-filter: none;
+}
+
+.card {
+  background-color: transparent;
+  box-shadow: none;
+  border: 0;
+}
+
+.link {
+  color: rgb(62, 92, 118); /* denim-blue */
+  text-decoration: underline;
+  text-decoration-color: rgba(160, 116, 82, 0.4); /* rope-brown */
+}
+
+.link:hover {
+  text-decoration-color: rgb(160, 116, 82); /* rope-brown */
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background-color: rgb(249, 244, 231); /* cream */
+  color: rgb(46, 28, 20); /* text-dark */
+  padding: 0.25rem 0.75rem;
+  border: 1px solid rgb(239, 230, 201); /* cream-300 */
+  font-size: 0.875rem;
+}
+
+/* Button styles - direct CSS for reliability */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  background-color: rgb(198, 90, 74); /* dusty-red */
+  color: rgb(255, 253, 249); /* text-light */
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn:hover {
+  background-color: rgb(178, 80, 64); /* dusty-red-600 */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:focus {
+  outline: 2px solid rgb(198, 90, 74); /* dusty-red */
+  outline-offset: 2px;
+}
+
+/* Font utilities - Explicit CSS classes for Tailwind v4 compatibility */
+.font-display {
+  font-family: var(--font-family-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.font-body {
+  font-family: var(--font-family-body);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.font-accent {
+  font-family: var(--font-family-accent);
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Color utilities - Explicit CSS classes for Tailwind v4 compatibility */
+.text-accent {
+  color: rgb(var(--color-accent));
+}
+
+.text-primary {
+  color: rgb(var(--color-primary));
+}
+
+.text-secondary {
+  color: rgb(var(--color-secondary));
+}
+
+.text-text-dark {
+  color: rgb(var(--color-text-dark));
+}
+
+.text-text-light {
+  color: rgb(var(--color-text-light));
+}
+
+.bg-primary {
+  background-color: rgb(var(--color-primary));
+}
+
+.bg-secondary {
+  background-color: rgb(var(--color-secondary));
+}
+
+.bg-cream {
+  background-color: rgb(var(--color-cream));
+}
+
+.bg-cream-50 {
+  background-color: rgb(var(--color-cream-50));
+}
+
+.border-secondary {
+  border-color: rgb(var(--color-secondary));
+}
+
+.border-primary {
+  border-color: rgb(var(--color-primary));
+}
+
+/* Additional color utilities with opacity */
+.text-accent\/80 {
+  color: rgba(var(--color-accent), 0.8);
+}
+
+.text-primary\/80 {
+  color: rgba(var(--color-primary), 0.8);
+}
+
+.text-text-dark\/80 {
+  color: rgba(var(--color-text-dark), 0.8);
+}
+
+.text-text-dark\/70 {
+  color: rgba(var(--color-text-dark), 0.7);
+}
+
+.text-text-dark\/60 {
+  color: rgba(var(--color-text-dark), 0.6);
+}
+
+.border-secondary\/20 {
+  border-color: rgba(var(--color-secondary), 0.2);
+}
+
+.border-secondary\/30 {
+  border-color: rgba(var(--color-secondary), 0.3);
+}
+
+.border-secondary\/40 {
+  border-color: rgba(var(--color-secondary), 0.4);
+}
+
+.bg-primary\/90 {
+  background-color: rgba(var(--color-primary), 0.9);
+}
+
+.ring-primary\/20 {
+  --tw-ring-color: rgba(var(--color-primary), 0.2);
+}
+
+.focus-visible\:ring-primary:focus-visible {
+  --tw-ring-color: rgb(var(--color-primary));
+}
+
+.smallcaps {
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+}
+
+.text-shadow-soft {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Readability helpers for floating content over illustrated background */
+.text-shadow-western {
+  text-shadow: 0 1px 0 rgba(46, 28, 20, 0.15), 0 2px 8px rgba(46, 28, 20, 0.06);
+}
+
+.bg-cream-fade {
+  background: linear-gradient(to bottom, rgba(249, 244, 231, 0.92), rgba(249, 244, 231, 0.78) 40%, rgba(249, 244, 231, 0) 100%);
+}
+
+/* Decorative background utilities */
+.paper {
+  background-image: url('/assets/parchment.svg');
+  background-size: cover;
+  background-position: center;
+}
+
+.frame-ornate {
+  /* Fallback style without ornament-corners.svg */
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid rgba(160, 116, 82, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+.rule-ornate {
+  background: url('/assets/ornament-divider2.svg') center no-repeat;
+  background-size: contain;
+  width: 100%;
+  max-width: 1400px;
+  height: 60px;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  margin: 1rem auto;
+}
+
+.sunburst-top {
+  /* Fallback style without sunburst.svg */
+  position: relative;
+}
+
+
+/* Inline emblem size helpers */
+.vaquero-8 {
+  width: 2rem;
+  height: 2rem;
+}
+
+.vaquero-12 {
+  width: 3rem;
+  height: 3rem;
+}
+
+.vaquero-16 {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* Single-color tint for dark-on-light or light-on-dark variants */
+.vaquero-tint {
+  filter: contrast(1.05) saturate(0.85);
+}
+
+.vaquero-shadow {
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.12)) drop-shadow(0 6px 18px rgba(0, 0, 0, 0.08));
+}
+
+/* Watermark background (centered, subtle) */
+.vaquero-watermark {
+  background-image: url('/assets/vaquero.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 360px auto;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* Western background utilities */
+.bg-western {
+  background-image: var(--western-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-western-subtle {
+  background-image: var(--western-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+}
+
+.bg-western-overlay {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(245, 235, 200, 0.25),
+      rgba(240, 220, 180, 0.45)
+    ),
+    var(--western-bg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Hero badge (paired with parchment or denim backgrounds) */
+.vaquero-badge {
+  background-image: url('/assets/vaquero.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Rope divider: fallback style without rope-tile.svg */
+.rule-rope {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(160, 116, 82, 0.5) 20%, rgba(160, 116, 82, 0.5) 80%, transparent);
+  margin: 1rem 0;
+}
+
+/* Larger variant for hero or section tops */
+.rule-rope-lg {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(160, 116, 82, 0.6) 20%, rgba(160, 116, 82, 0.6) 80%, transparent);
+  margin: 1.5rem 0;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.08));
+}
+
+.bg-denim {
+  background: linear-gradient(to bottom right, rgba(34,58,85,.95), rgba(45,75,110,.95));
+  background-size: cover;
+}
+
+/* Global body background - commented out to avoid conflicts with .bg-western-overlay */
+/* body {
+  background-image: var(--western-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+} */
+
+/* Ensure html, body, and root stretch to full height and are transparent */
+html, body, #root {
+  height: 100%;
+}
+
+html, body {
+  background: transparent;
+}
+
+/* Base typography - set font on body */
+body {
+  font-family: var(--font-body);
+  color: rgb(46, 28, 20); /* text-dark */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+  line-height: 1.625; /* Improved readability */
+}
+
+/* Ensure all elements inherit fonts properly */
+* {
+  font-family: inherit;
+}
+
+/* Typography defaults - Old Mexican Rodeo Style */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-western);
+  font-weight: 400; /* Rye has built-in boldness */
+  /* Removed hardcoded color to allow Tailwind utilities to work */
+  letter-spacing: 0.02em; /* Slight spacing for rodeo poster feel */
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.3;
+  letter-spacing: 0.025em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+h4 {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+p {
+  font-family: var(--font-body);
+  line-height: 1.7; /* Comfortable reading */
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+  
+  body {
+    font-size: 0.9375rem; /* 15px for better mobile readability */
+    line-height: 1.6;
+  }
+}
+
+/* Tailwind v4 - Section Wrap Utility for Snap Scrolling */
+@layer utilities {
+  .section-wrap {
+    scroll-margin-top: 5rem; /* For sticky header */
+    padding: 3.5rem 1rem; /* py-14 px-4 equivalent */
+    width: 100%;
+  }
+  
+  @media (min-width: 640px) {
+    .section-wrap {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .section-wrap {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+}
+

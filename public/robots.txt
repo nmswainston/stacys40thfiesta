@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stacys40th.netlify.app/sitemap.xml
+

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
 import site from "@data/siteData";
+import { useEffect, useState } from "react";
 
 interface Driver {
   firstName: string;
@@ -41,7 +41,14 @@ export default function CarpoolBulletinBoard() {
         setRiders(data.riders || []);
         setLoading(false);
       } catch (err) {
-        console.log('Carpool data fetch error:', err);
+        // Only log if not a dev environment 404 (Netlify functions not running)
+        const isDev = import.meta.env.DEV;
+        const is404Error = err instanceof SyntaxError && err.message.includes('<!doctype');
+        
+        if (!isDev || !is404Error) {
+          console.log('Carpool data fetch error:', err);
+        }
+        
         // Gracefully show empty bulletin board instead of error
         setDrivers([]);
         setRiders([]);

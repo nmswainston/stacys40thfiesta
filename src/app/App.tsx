@@ -33,6 +33,8 @@ const router = createBrowserRouter(
       v7_normalizeFormMethod: true,
       v7_partialHydration: true,
       v7_skipActionErrorRevalidation: true,
+      // @ts-expect-error - v7_startTransition exists in runtime but not in current type definitions
+      v7_startTransition: true,
     }
   }
 );

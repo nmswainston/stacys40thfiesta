@@ -76,6 +76,11 @@ export default function MemoryFeed() {
                 className="w-full rounded-lg object-cover max-h-48 sm:max-h-64"
                 loading="lazy"
                 decoding="async"
+                onError={(e) => {
+                  // Hide the image if it fails to load
+                  e.currentTarget.style.display = 'none';
+                  console.error('Failed to load image:', memory.photoUrl);
+                }}
               />
             )}
             

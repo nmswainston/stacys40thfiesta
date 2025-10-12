@@ -30,7 +30,16 @@ export const handler = async () => {
     // Map to Memory[] and strip HTML
     const memories: Memory[] = subs.map((s: any) => {
       const data = s.data || {};
-      const photoUrl = data.photo_url || data.photo || (s?.uploads && s.uploads[0]?.url) || undefined;
+      
+      // Try multiple ways to get the photo URL from Netlify submissions
+      let photoUrl = undefined;
+      if (s.uploads && Array.isArray(s.uploads) && s.uploads.length > 0) {
+        // Netlify stores uploaded files in the uploads array
+        photoUrl = s.uploads[0].url;
+      } else if (data.photo) {
+        // Fallback to data.photo if available
+        photoUrl = data.photo;
+      }
       
       return {
         id: s.id,

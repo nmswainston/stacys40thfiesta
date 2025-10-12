@@ -148,7 +148,7 @@ const site = {
 
   stay: {
     heading: "Stay",
-    description: "Our Rocky Point bunkhouse for Stacy's 40th fiesta weekend.",
+    description: "Our Rocky Point homestead for Stacy's 40th fiesta weekend.",
     airbnbUrl: "https://www.airbnb.com/l/GWid9RDo",
     ctaButton: "View on Airbnb →",
     

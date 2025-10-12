@@ -25,17 +25,17 @@
 - [x] Copy and save the token securely
 
 #### Get Form ID
-- [ ] Go to Netlify Dashboard → Your Site → Forms
-- [ ] Click on "memories" form (appears after first deploy)
-- [ ] Copy Form ID from URL bar
-- [ ] It looks like: `5f8a4b2c3d1e9f7a6b5c4d3e`
+- [x] Go to Netlify Dashboard → Your Site → Forms
+- [x] Click on "memories" form (appears after first deploy)
+- [x] Copy Form ID from URL bar
+- [x] It looks like: `5f8a4b2c3d1e9f7a6b5c4d3e`
 
 ### 3. Configure Environment Variables
-- [ ] Go to Site Settings → Environment Variables
-- [ ] Add `NETLIFY_TOKEN` with your token
-- [ ] Add `NETLIFY_FORM_ID_MEMORIES` with your form ID
-- [ ] Click "Save"
-- [ ] **Trigger a new deployment** (important!)
+- [X] Go to Site Settings → Environment Variables
+- [X] Add `NETLIFY_TOKEN` with your token
+- [X] Add `NETLIFY_FORM_ID_MEMORIES` with your form ID
+- [X] Click "Save"
+- [x] **Trigger a new deployment** (important!)
 
 ### 4. Test Everything
 - [ ] Visit `/memories` on your live site

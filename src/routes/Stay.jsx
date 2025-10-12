@@ -25,9 +25,9 @@ export default function Stay() {
 
   return (
     // Note: Keep bg-transparent here to show the western background from LayoutSinglePage
-    <main className="min-h-screen text-ink bg-transparent">
+    <div className="min-h-screen text-ink bg-transparent">
       {/* Header */}
-      <section className="mx-auto max-w-6xl p-6 md:p-10 pt-8">
+      <section className="mx-auto max-w-6xl p-6 md:p-10">
         <h1 className="text-3xl md:text-5xl font-semibold">{site.stay.heading}</h1>
         <p className="mt-2 max-w-2xl text-ink/80 text-sm md:text-base">
           {site.stay.description}
@@ -88,6 +88,6 @@ export default function Stay() {
         </div>
       </section>
 
-    </main>
+    </div>
   );
 }

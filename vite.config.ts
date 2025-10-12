@@ -18,5 +18,22 @@ export default defineConfig({
       "@styles": path.resolve(__dirname, "./src/styles"),
       "@app": path.resolve(__dirname, "./src/app"),
     }
-  }
+  },
+  build: {
+    // Improve chunking for better caching
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunks for better caching
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          // Confetti only loads on interaction, separate chunk
+          'confetti': ['canvas-confetti'],
+        },
+      },
+    },
+    // Enable source maps for debugging (can disable in production if needed)
+    sourcemap: false,
+    // Increase chunk size warning limit to 1000kb (reasonable for modern web)
+    chunkSizeWarningLimit: 1000,
+  },
 });

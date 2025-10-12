@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback } from "react";
 import type { Memory } from "@features/memories/types";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Slideshow() {
   const [memories, setMemories] = useState<Memory[]>([]);
@@ -123,6 +123,8 @@ export default function Slideshow() {
                 src={currentMemory.photoUrl} 
                 alt={`Memory from ${currentMemory.name}`}
                 className="max-h-[50vh] max-w-full object-contain rounded-lg shadow-2xl"
+                loading="eager"
+                decoding="auto"
               />
             </div>
           )}

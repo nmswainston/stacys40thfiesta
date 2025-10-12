@@ -1,14 +1,19 @@
 import { ROUTES } from "@/constants";
-import Agenda from "@routes/Agenda";
-import Home from "@routes/Home";
-import Memories from "@routes/Memories";
-import NotFound from "@routes/NotFound";
-import RSVP from "@routes/RSVP";
-import Slideshow from "@routes/Slideshow";
-import Stay from "@routes/Stay";
-import Travel from "@routes/Travel";
+import { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LayoutSinglePage from "./layout/LayoutSinglePage";
+
+// Eager load Home for above-the-fold content
+import Home from "@routes/Home";
+
+// Lazy load all other routes (below the fold / separate pages)
+const Stay = lazy(() => import("@routes/Stay"));
+const Agenda = lazy(() => import("@routes/Agenda"));
+const RSVP = lazy(() => import("@routes/RSVP"));
+const Memories = lazy(() => import("@routes/Memories"));
+const Travel = lazy(() => import("@routes/Travel"));
+const Slideshow = lazy(() => import("@routes/Slideshow"));
+const NotFound = lazy(() => import("@routes/NotFound"));
 
 const router = createBrowserRouter(
   [
@@ -40,6 +45,18 @@ const router = createBrowserRouter(
 );
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider 
+      router={router} 
+      fallbackElement={
+        <div className="min-h-screen flex items-center justify-center bg-western-overlay">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto mb-4"></div>
+            <p className="text-brand-700 font-body">Loading...</p>
+          </div>
+        </div>
+      }
+    />
+  );
 }
 

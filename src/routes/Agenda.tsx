@@ -1,6 +1,5 @@
-import React from "react";
-import site from "@data/siteData";
 import { GlassPanel } from "@components/layout";
+import site from "@data/siteData";
 
 export default function Agenda(){
   return (
@@ -16,7 +15,11 @@ export default function Agenda(){
         {site.agenda.map((s,i)=> (
           <article key={i} className="card-base flex flex-col h-full">
             <div className="flex items-start gap-3 mb-3">
-              <div className="text-2xl sm:text-3xl flex-shrink-0" role="img" aria-label={`${s.title} icon`}>{s.icon}</div>
+              {s.icon.startsWith('/') ? (
+                <img src={s.icon} alt={`${s.title} icon`} className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" />
+              ) : (
+                <div className="text-2xl sm:text-3xl flex-shrink-0" role="img" aria-label={`${s.title} icon`}>{s.icon}</div>
+              )}
               <div className="flex-1 min-w-0">
                 <h3 className="text-lg sm:text-xl font-extrabold leading-tight break-words">{s.day}</h3>
                 <div className="font-semibold text-sm sm:text-base mt-1 leading-tight">{s.title}</div>
@@ -26,12 +29,12 @@ export default function Agenda(){
             {s.link && <a className="link mt-3 inline-block text-xs sm:text-sm" href={s.link} target="_blank" rel="noreferrer">Learn more →</a>}
             <div className="flex items-center justify-between flex-wrap gap-2 text-xs sm:text-sm mt-3 pt-3 border-t border-secondary/20">
               <div className="flex items-center gap-1.5">
-                <span>🕐</span>
+                <img src="/assets/stopwatch.svg" alt="time" className="w-4 h-4" />
                 <span>{s.time}</span>
               </div>
               {s.estimatedCost && (
                 <div className="flex items-center gap-1.5 opacity-70">
-                  <span>💰</span>
+                  <img src="/assets/money-bag.svg" alt="money bag" className="w-4 h-4" />
                   <span>{s.estimatedCost}</span>
                 </div>
               )}

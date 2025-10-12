@@ -94,7 +94,11 @@ export default function CarpoolBulletinBoard() {
         {/* Need a Ride Section */}
         <div className="frost-layer">
           <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-secondary/30">
-            <span className="text-2xl" role="img" aria-label="Need a ride">🙋</span>
+            {site.sections.carpool.needingCard.icon.startsWith('/') ? (
+              <img src={site.sections.carpool.needingCard.icon} alt="dancer girl" className="w-6 h-6" />
+            ) : (
+              <span className="text-2xl" role="img" aria-label="Need a ride">{site.sections.carpool.needingCard.icon}</span>
+            )}
             <h4 className="font-display text-xl font-bold text-primary">
               {b.needRideHeading}
             </h4>
@@ -124,7 +128,11 @@ export default function CarpoolBulletinBoard() {
         {/* Offering a Ride Section */}
         <div className="frost-layer">
           <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-secondary/30">
-            <span className="text-2xl" role="img" aria-label="Offering rides">🚗</span>
+            {site.sections.carpool.offeringCard.icon.startsWith('/') ? (
+              <img src={site.sections.carpool.offeringCard.icon} alt="wagon" className="w-6 h-6" />
+            ) : (
+              <span className="text-2xl" role="img" aria-label="Offering rides">{site.sections.carpool.offeringCard.icon}</span>
+            )}
             <h4 className="font-display text-xl font-bold text-primary">
               {b.offeringRideHeading}
             </h4>

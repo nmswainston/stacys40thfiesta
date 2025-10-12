@@ -1,6 +1,6 @@
 const site = {
   meta: {
-    date: "Thursday, April 16 - Sunday, April 19, 2026",
+    date: "Thu, Apr 16 – Sun, Apr 19, 2026",
     locationCity: "Puerto Peñasco (Rocky Point), Sonora, Mexico"
   },
 
@@ -10,7 +10,7 @@ const site = {
     celebrationText: "Saddle Up for 40!",
     subtitle: "Kick off your boots and make some memories worth yee-hawing about!",
     ctaButton: "Saddle Up!",
-    date: "Thursday, April 16 - Sunday, April 19, 2026",
+    date: "Thu, Apr 16 – Sun, Apr 19, 2026",
     location: "Puerto Peñasco (Rocky Point), Sonora, Mexico"
   },
 
@@ -21,7 +21,7 @@ const site = {
     },
     rsvp: {
       heading: "Pony Up",
-      description: "Join us in celebrating Stacy's milestone birthday!\n\nPlease RSVP below by Sunday, November 2, 2025.",
+      description: "Join us in celebrating Stacy's milestone birthday!\n\nPlease RSVP below by Sun, Nov 2, 2025.",
       ctaButton: "Complete RSVP Form →"
     },
     stay: {
@@ -37,14 +37,14 @@ const site = {
       heading: "Wagon Train",
       description: "Hitting the dusty trail from Arizona? Let's ride out together!",
       offeringCard: {
-        icon: "🚗",
+        icon: "/assets/wagon-icon.svg",
         title: "Offering a Ride?",
-        description: "Got extra seats in your stagecoach? Drop your deets below."
+        description: "Got extra seats in your stagecoach?"
       },
       needingCard: {
-        icon: "🙋",
+        icon: "/assets/dancer-girl.svg",
         title: "Need a Ride?",
-        description: "Need a seat in a wagon? Drop your deets below."
+        description: "Need a seat in a wagon?"
       },
       formHeading: "Sign Up for Carpool"
     }
@@ -63,11 +63,11 @@ const site = {
         },
         {
           title: "Deposit: $200 per person via Zelle",
-          description: "Deadline: Sunday, November 2, 2025"
+          description: "Deadline: Sun, Nov 2, 2025"
         },
         {
           title: "Final payment",
-          description: "Deadline: Sunday, December 7, 2025"
+          description: "Deadline: Sun, Dec 7, 2025"
         }
       ]
     },
@@ -123,7 +123,7 @@ const site = {
       details: "Private chef taco bar + margaritas",
       time: "All day",
       estimatedCost: "$40 - $60",
-      icon: "🍹" 
+      icon: "/assets/margarita-icon.svg" 
     },
     { 
       day: "Friday\nNight", 

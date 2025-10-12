@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import type { Memory } from "@features/memories/types";
+import { useEffect, useState } from "react";
 
 export default function MemoryFeed() {
   const [memories, setMemories] = useState<Memory[]>([]);
@@ -11,12 +11,15 @@ export default function MemoryFeed() {
       try {
         const response = await fetch('/.netlify/functions/memories-list');
         if (!response.ok) {
-          throw new Error('Failed to load memories');
+          const statusText = response.status === 500 
+            ? 'Server error - please try again later' 
+            : `Unable to load memories (${response.status})`;
+          throw new Error(statusText);
         }
         const data = await response.json();
         setMemories(data.memories || []);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : 'Unable to connect - please check your internet connection');
       } finally {
         setLoading(false);
       }
@@ -35,8 +38,13 @@ export default function MemoryFeed() {
 
   if (error) {
     return (
-      <div className="text-center py-6 sm:py-8">
-        <p className="text-red-600 font-body text-sm sm:text-base">Error: {error}</p>
+      <div className="text-center py-6 sm:py-8 frost-layer-light max-w-md mx-auto">
+        <p className="text-red-700 font-body text-sm sm:text-base mb-3">
+          😔 Oops! We couldn't load the memories right now.
+        </p>
+        <p className="text-text-dark/70 font-body text-xs sm:text-sm">
+          {error}
+        </p>
       </div>
     );
   }
@@ -66,6 +74,8 @@ export default function MemoryFeed() {
                 src={memory.photoUrl} 
                 alt={`Memory from ${memory.name}`}
                 className="w-full rounded-lg object-cover max-h-48 sm:max-h-64"
+                loading="lazy"
+                decoding="async"
               />
             )}
             

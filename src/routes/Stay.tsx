@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { ResponsiveImage } from "@components/ui";
 import site from "@data/siteData";
 
 // Tailwind v4 classes assumed. Replace placeholder images under /public/assets/airbnb/
@@ -55,7 +55,13 @@ export default function Stay() {
             onClick={() => window.open(photos[0], "_blank")}
             aria-label="Open hero photo"
           >
-            <img src={photos[0]} alt="Airbnb hero view" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <ResponsiveImage 
+              src={photos[0]} 
+              alt="Airbnb hero view" 
+              className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+              lazy={false}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+            />
           </button>
           
           {/* 3-column grid for remaining photos */}
@@ -67,10 +73,12 @@ export default function Stay() {
                 onClick={() => window.open(photo, "_blank")}
                 aria-label={`Open photo ${index + 2}`}
               >
-                <img 
+                <ResponsiveImage 
                   src={photo} 
                   alt={`Property view ${index + 2}`} 
-                  className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                  className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  lazy={true}
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
                 />
               </button>
             ))}

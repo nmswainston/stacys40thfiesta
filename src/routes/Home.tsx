@@ -1,11 +1,23 @@
 import { EVENT_DATE, ROUTES } from "@/constants";
 import { ActiveSectionContext, useCountdown, useSectionObserver } from "@/hooks";
+import { BackToTop } from "@components/ui";
 import site from "@data/siteData";
-import { CarpoolBulletinBoard, CarpoolForm } from "@features/carpool";
-import { MemoryFeed, MemoryForm } from "@features/memories";
-import { fireConfetti } from "@lib/utils/confetti";
-import React, { useRef, useState } from "react";
+import React, { lazy, Suspense, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+
+// Lazy load below-the-fold components
+const CarpoolBulletinBoard = lazy(() => 
+  import("@features/carpool").then(m => ({ default: m.CarpoolBulletinBoard }))
+);
+const CarpoolForm = lazy(() => 
+  import("@features/carpool").then(m => ({ default: m.CarpoolForm }))
+);
+const MemoryFeed = lazy(() => 
+  import("@features/memories").then(m => ({ default: m.MemoryFeed }))
+);
+const MemoryForm = lazy(() => 
+  import("@features/memories").then(m => ({ default: m.MemoryForm }))
+);
 
 export { useActiveSection } from "@/hooks";
 
@@ -26,8 +38,11 @@ export default function Home() {
   // Observe sections for active tracking
   useSectionObserver(sectionRefs, setActiveSection);
 
-  const handleRSVPClick = (e: React.MouseEvent) => {
+  const handleRSVPClick = async (e: React.MouseEvent) => {
     e.preventDefault();
+    
+    // Lazy load confetti only when needed (click interaction)
+    const { fireConfetti } = await import("@lib/utils/confetti");
     fireConfetti();
 
     setTimeout(() => {
@@ -174,9 +189,13 @@ export default function Home() {
                   <article key={i} className="card-base focus-within:ring-2 focus-within:ring-primary/50 flex flex-col h-full">
                     {/* Header with icon and day */}
                     <div className="flex items-start sm:items-center gap-3 mb-4">
-                      <div className="text-2xl sm:text-3xl flex-shrink-0" role="img" aria-label={`${s.title} icon`}>
-                        {s.icon}
-                      </div>
+                      {s.icon.startsWith('/') ? (
+                        <img src={s.icon} alt={`${s.title} icon`} className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" />
+                      ) : (
+                        <div className="text-2xl sm:text-3xl flex-shrink-0" role="img" aria-label={`${s.title} icon`}>
+                          {s.icon}
+                        </div>
+                      )}
                       <div className="flex-1 min-w-0">
                         <h3 className="text-lg sm:text-xl font-extrabold text-primary font-display tracking-wide leading-tight whitespace-pre-line break-words">{s.day}</h3>
                         <div className="font-semibold text-sm sm:text-base text-text-dark font-body tracking-normal leading-tight mt-1">{s.title}</div>
@@ -206,12 +225,12 @@ export default function Home() {
                     <div className="mt-auto pt-3 border-t border-secondary/20">
                       <div className="flex items-center justify-between text-xs sm:text-sm flex-wrap gap-2">
                         <div className="flex items-center gap-1.5 sm:gap-2 text-text-dark/80">
-                          <span className="text-accent text-sm">🕐</span>
+                          <img src="/assets/stopwatch.svg" alt="time" className="w-4 h-4" />
                           <span className="font-body tracking-normal">{s.time}</span>
                         </div>
                         {s.estimatedCost && (
                           <div className="flex items-center gap-1.5 sm:gap-2 text-text-dark/70">
-                            <span className="text-accent text-sm">💰</span>
+                            <img src="/assets/money-bag.svg" alt="money bag" className="w-4 h-4" />
                             <span className="font-body tracking-normal font-medium">{s.estimatedCost}</span>
                           </div>
                         )}
@@ -310,12 +329,16 @@ export default function Home() {
                 </p>
               </div>
               <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
-                <div className="card-base">
-                  <MemoryForm />
-                </div>
-                <div className="card-base">
-                  <MemoryFeed />
-                </div>
+                <Suspense fallback={<div className="card-base min-h-[400px] flex items-center justify-center"><div className="animate-pulse text-brand-700">Loading form...</div></div>}>
+                  <div className="card-base">
+                    <MemoryForm />
+                  </div>
+                </Suspense>
+                <Suspense fallback={<div className="card-base min-h-[400px] flex items-center justify-center"><div className="animate-pulse text-brand-700">Loading memories...</div></div>}>
+                  <div className="card-base">
+                    <MemoryFeed />
+                  </div>
+                </Suspense>
               </div>
             </div>
           </div>
@@ -346,7 +369,11 @@ export default function Home() {
                   <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                     <div className="frost-layer">
                       <h3 className="text-base sm:text-lg font-display font-bold text-primary flex items-start sm:items-center gap-2 tracking-wide">
-                        <span role="img" aria-label="car" className="text-lg sm:text-xl flex-shrink-0">{site.sections.carpool.offeringCard.icon}</span>
+                        {site.sections.carpool.offeringCard.icon.startsWith('/') ? (
+                          <img src={site.sections.carpool.offeringCard.icon} alt="wagon" className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                        ) : (
+                          <span role="img" aria-label="car" className="text-lg sm:text-xl flex-shrink-0">{site.sections.carpool.offeringCard.icon}</span>
+                        )}
                         <span className="leading-tight">{site.sections.carpool.offeringCard.title}</span>
                       </h3>
                       <p className="text-xs sm:text-sm text-text-dark/70 mt-2 font-body tracking-normal leading-relaxed">
@@ -356,7 +383,15 @@ export default function Home() {
 
                     <div className="frost-layer">
                       <h3 className="text-base sm:text-lg font-display font-bold text-primary flex items-start sm:items-center gap-2 tracking-wide">
-                        <span role="img" aria-label="raising hand" className="text-lg sm:text-xl flex-shrink-0">{site.sections.carpool.needingCard.icon}</span>
+                        {site.sections.carpool.needingCard.icon.endsWith('.svg') ? (
+                          <img 
+                            src={site.sections.carpool.needingCard.icon} 
+                            alt="dancer girl" 
+                            className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
+                          />
+                        ) : (
+                          <span role="img" aria-label="raising hand" className="text-lg sm:text-xl flex-shrink-0">{site.sections.carpool.needingCard.icon}</span>
+                        )}
                         <span className="leading-tight">{site.sections.carpool.needingCard.title}</span>
                       </h3>
                       <p className="text-xs sm:text-sm text-text-dark/70 mt-2 font-body tracking-normal leading-relaxed">
@@ -365,16 +400,20 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="card-base">
-                    <h3 className="text-xl sm:text-2xl font-display font-bold mb-4 sm:mb-6 text-primary border-b-2 border-secondary/30 pb-3 tracking-wide">{site.sections.carpool.formHeading}</h3>
-                    <CarpoolForm />
-                  </div>
+                  <Suspense fallback={<div className="card-base min-h-[400px] flex items-center justify-center"><div className="animate-pulse text-brand-700">Loading form...</div></div>}>
+                    <div className="card-base">
+                      <h3 className="text-xl sm:text-2xl font-display font-bold mb-4 sm:mb-6 text-primary border-b-2 border-secondary/30 pb-3 tracking-wide">{site.sections.carpool.formHeading}</h3>
+                      <CarpoolForm />
+                    </div>
+                  </Suspense>
                 </div>
 
                 {/* Right Side: Bulletin Board */}
-                <div className="lg:sticky lg:top-24 lg:self-start">
-                  <CarpoolBulletinBoard />
-                </div>
+                <Suspense fallback={<div className="lg:sticky lg:top-24 lg:self-start min-h-[400px] flex items-center justify-center"><div className="animate-pulse text-brand-700">Loading bulletin...</div></div>}>
+                  <div className="lg:sticky lg:top-24 lg:self-start">
+                    <CarpoolBulletinBoard />
+                  </div>
+                </Suspense>
               </div>
             </div>
           </div>
@@ -407,6 +446,9 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Back to top button */}
+      <BackToTop />
     </ActiveSectionContext.Provider>
   );
 }

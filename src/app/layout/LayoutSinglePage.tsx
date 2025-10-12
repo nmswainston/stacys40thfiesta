@@ -62,10 +62,7 @@ export default function LayoutSinglePage() {
   return (
     <div className="min-h-dvh bg-western-overlay">
       {/* Skip to content link for accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-brand-600 focus:rounded focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
-      >
+      <a href="#welcome" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white/90 focus:text-ink focus:px-3 focus:py-2 focus:rounded">
         Skip to content
       </a>
 
@@ -143,6 +140,7 @@ export default function LayoutSinglePage() {
               className="lg:hidden flex items-center justify-center p-2 text-brand-700 hover:text-brand-600 hover:bg-brand-200 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
               aria-label="Toggle navigation menu"
               aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? (
                 // Close Icon
@@ -171,6 +169,7 @@ export default function LayoutSinglePage() {
 
       {/* Mobile Menu Drawer */}
       <div 
+        id="mobile-menu"
         className={`fixed top-0 right-0 bottom-0 w-64 bg-white shadow-xl z-50 lg:hidden transform transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}

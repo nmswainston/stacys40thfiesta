@@ -44,7 +44,7 @@ const site = {
       needingCard: {
         icon: "/assets/dancer-girl.svg",
         title: "Need a Ride?",
-        description: "Need a seat in a wagon?"
+        description: "Need to hitch a ride?"
       },
       formHeading: "Sign Up for Carpool"
     }
@@ -245,8 +245,8 @@ const site = {
     bulletinBoard: {
       heading: "Carpool Board",
       subheading: "Coordinate rides to Rocky Point",
-      needRideHeading: "Need a Ride",
-      offeringRideHeading: "Offering Rides",
+      needRideHeading: "Need a Ride?",
+      offeringRideHeading: "Offering a Ride?",
       noRidersText: "No riders yet, pardner!",
       noDriversText: "No drivers yet. Got space for a stowaway?",
       loadingText: "Loading bulletin board...",

@@ -367,34 +367,42 @@ export default function Home() {
                 {/* Left Side: Sign Up Form */}
                 <div className="space-y-4 sm:space-y-6">
                   <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-                    <div className="frost-layer">
-                      <h3 className="text-base sm:text-lg font-display font-bold text-primary flex items-start sm:items-center gap-2 tracking-wide">
+                    <div className="frost-layer flex flex-col">
+                      <div className="flex items-start gap-3 mb-3 flex-grow">
                         {site.sections.carpool.offeringCard.icon.startsWith('/') ? (
-                          <img src={site.sections.carpool.offeringCard.icon} alt="wagon" className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                          <img src={site.sections.carpool.offeringCard.icon} alt="wagon" className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0 mt-0.5" />
                         ) : (
-                          <span role="img" aria-label="car" className="text-lg sm:text-xl flex-shrink-0">{site.sections.carpool.offeringCard.icon}</span>
+                          <span role="img" aria-label="wagon" className="text-xl sm:text-2xl flex-shrink-0 mt-0.5">{site.sections.carpool.offeringCard.icon}</span>
                         )}
-                        <span className="leading-tight">{site.sections.carpool.offeringCard.title}</span>
-                      </h3>
-                      <p className="text-xs sm:text-sm text-text-dark/70 mt-2 font-body tracking-normal leading-relaxed">
+                        <div className="flex-1">
+                          <h3 className="text-lg sm:text-xl font-display font-bold text-primary tracking-wide leading-tight">
+                            {site.sections.carpool.offeringCard.title}
+                          </h3>
+                        </div>
+                      </div>
+                      <p className="text-sm sm:text-base text-text-dark font-body tracking-normal leading-relaxed mt-auto">
                         {site.sections.carpool.offeringCard.description}
                       </p>
                     </div>
 
-                    <div className="frost-layer">
-                      <h3 className="text-base sm:text-lg font-display font-bold text-primary flex items-start sm:items-center gap-2 tracking-wide">
-                        {site.sections.carpool.needingCard.icon.endsWith('.svg') ? (
+                    <div className="frost-layer flex flex-col">
+                      <div className="flex items-start gap-3 mb-3 flex-grow">
+                        {site.sections.carpool.needingCard.icon.startsWith('/') ? (
                           <img 
                             src={site.sections.carpool.needingCard.icon} 
                             alt="dancer girl" 
-                            className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
+                            className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0 mt-0.5"
                           />
                         ) : (
-                          <span role="img" aria-label="raising hand" className="text-lg sm:text-xl flex-shrink-0">{site.sections.carpool.needingCard.icon}</span>
+                          <span role="img" aria-label="dancer girl" className="text-xl sm:text-2xl flex-shrink-0 mt-0.5">{site.sections.carpool.needingCard.icon}</span>
                         )}
-                        <span className="leading-tight">{site.sections.carpool.needingCard.title}</span>
-                      </h3>
-                      <p className="text-xs sm:text-sm text-text-dark/70 mt-2 font-body tracking-normal leading-relaxed">
+                        <div className="flex-1">
+                          <h3 className="text-lg sm:text-xl font-display font-bold text-primary tracking-wide leading-tight">
+                            {site.sections.carpool.needingCard.title}
+                          </h3>
+                        </div>
+                      </div>
+                      <p className="text-sm sm:text-base text-text-dark font-body tracking-normal leading-relaxed mt-auto">
                         {site.sections.carpool.needingCard.description}
                       </p>
                     </div>

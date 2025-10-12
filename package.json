@@ -19,6 +19,7 @@
     "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
+    "@netlify/functions": "^4.3.0",
     "@tailwindcss/postcss": "^4.1.14",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^24.7.2",

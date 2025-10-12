@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import site from "@data/siteData";
 import { NetlifyForm } from "@components/integrations";
-import { Input, Button } from "@components/ui";
-import { validateCarpoolForm, formatCarpoolData } from "../helpers";
+import { Button, Input } from "@components/ui";
+import site from "@data/siteData";
 import { postNetlifyForm } from "@lib/api/netlify";
 import { fireConfetti } from "@lib/utils/confetti";
+import React, { useState } from "react";
+import { validateCarpoolForm } from "../helpers";
 
 interface FormData {
   name: string;
@@ -65,7 +65,7 @@ export default function CarpoolForm() {
       });
       
       // Show success message
-      alert("Thanks for signing up! We've received your carpool info. We'll be in touch soon to coordinate rides!");
+      alert("Thanks for signing up! Your info is now on the Carpool Board. Check it out to coordinate rides with others!");
       
       // Scroll to top of carpool section
       setTimeout(() => {
@@ -118,8 +118,8 @@ export default function CarpoolForm() {
         placeholder={c.placeholders.phone}
       />
 
-      <div className="space-y-2">
-        <label className="block text-xs sm:text-sm font-semibold text-ink">{c.labels.role}</label>
+      <fieldset className="space-y-2">
+        <legend className="block text-xs sm:text-sm font-semibold text-ink">{c.labels.role}</legend>
         <div className="flex gap-3 sm:gap-4 flex-wrap">
           <label className="flex items-center gap-2 cursor-pointer">
             <input
@@ -128,6 +128,7 @@ export default function CarpoolForm() {
               value="driver"
               checked={formData.role === "driver"}
               onChange={handleChange}
+              autoComplete="off"
               className="w-4 h-4 text-brand-600 border-brand-300 focus:ring-accent flex-shrink-0"
             />
             <span className="font-spanish-body text-sm sm:text-base">{c.roleOptions.driver}</span>
@@ -139,13 +140,14 @@ export default function CarpoolForm() {
               value="rider"
               checked={formData.role === "rider"}
               onChange={handleChange}
+              autoComplete="off"
               className="w-4 h-4 text-brand-600 border-brand-300 focus:ring-accent flex-shrink-0"
             />
             <span className="font-spanish-body text-sm sm:text-base">{c.roleOptions.rider}</span>
           </label>
         </div>
         {errors.role && <p className="text-xs text-red-600 mt-1">{errors.role}</p>}
-      </div>
+      </fieldset>
 
       {formData.role === "driver" && (
         <Input
@@ -171,11 +173,13 @@ export default function CarpoolForm() {
       />
 
       <div className="space-y-1">
-        <label className="block text-xs sm:text-sm font-semibold text-ink">{c.labels.notes}</label>
+        <label htmlFor="carpool-notes" className="block text-xs sm:text-sm font-semibold text-ink">{c.labels.notes}</label>
         <textarea
+          id="carpool-notes"
           name="notes"
           value={formData.notes}
           onChange={handleChange}
+          autoComplete="off"
           className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border-2 border-brand-200 rounded-xl focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-accent/30 transition-colors font-spanish-body bg-cream-50 text-sm sm:text-base leading-relaxed"
           rows={3}
           placeholder={c.placeholders.notes}

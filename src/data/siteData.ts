@@ -8,7 +8,7 @@ const site = {
     oleText: "¡Ole!",
     mainTitle: "Stacy's Rodeo Retreat",
     celebrationText: "Saddle Up for 40!",
-    subtitle: "Kick of your boots and make some memories worth yee-hawing about!",
+    subtitle: "Kick off your boots and make some memories worth yee-hawing about!",
     ctaButton: "Saddle Up!",
     date: "Thursday, April 16 - Sunday, April 19, 2026",
     location: "Puerto Peñasco (Rocky Point), Sonora, Mexico"
@@ -31,7 +31,7 @@ const site = {
     },
     memories: {
       heading: "Drop A Memory In The Corral",
-      description: "Dust off your favorite stacy stories, and show 'em off (Photos wanted!)"
+      description: "Dust off your favorite Stacy stories and show 'em off - photos wanted!"
     },
     carpool: {
       heading: "Wagon Train",
@@ -95,7 +95,7 @@ const site = {
     },
 
     questions: {
-      heading: "Shoot Your Questions?",
+      heading: "Got Questions?",
       text: "Wrangle Nick if you have questions."
     },
 
@@ -192,9 +192,27 @@ const site = {
   travel: {
     heading: "Travel & Tips",
     tips: [
-      "Bring passport and ID.",
-      "If flying in, fly into Phoenix Sky Harbor Airport, then carpool the 3.5 hour drive to Rocky Point.",
+      "Bring your passport and ID.",
+      "If flying in, fly into Phoenix Sky Harbor Airport, then take a carpool for the 3.5-hour drive to Rocky Point.",
       "Special car insurance is encouraged for driving in Mexico."
+    ]
+  },
+
+  faq: {
+    heading: "FAQ",
+    questions: [
+      {
+        question: "What's the vibe?",
+        answer: "Spanish rodeo chic: denim + gentle gold accents. Shine encouraged."
+      },
+      {
+        question: "Refunds?",
+        answer: "$200 pp deposit fully refundable until April due to house policy."
+      },
+      {
+        question: "Plus-ones?",
+        answer: "Check with Nick so we can keep headcount accurate."
+      }
     ]
   },
 

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 import { fireConfetti } from "@lib/utils/confetti";
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export default function MemoryForm() {
   const [searchParams] = useSearchParams();
@@ -27,7 +27,7 @@ export default function MemoryForm() {
         encType="multipart/form-data"
         action="/memories?submitted=true"
       >
-        <input type="hidden" name="form-name" value="memories" />
+        <input type="hidden" name="form-name" value="memories" autoComplete="off" />
         
         {/* Honeypot field for spam prevention */}
         <input 
@@ -47,6 +47,7 @@ export default function MemoryForm() {
             id="memory-name"
             name="name" 
             required 
+            autoComplete="name"
             className="mt-1 w-full rounded-xl border border-secondary/20 p-2.5 sm:p-3 text-sm sm:text-base focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-transparent font-body" 
             placeholder="Your name"
             aria-required="true"
@@ -61,6 +62,7 @@ export default function MemoryForm() {
             id="memory-message"
             name="message" 
             required
+            autoComplete="off"
             className="mt-1 w-full rounded-xl border border-secondary/20 p-2.5 sm:p-3 text-sm sm:text-base focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-transparent font-body leading-relaxed" 
             rows={5} 
             placeholder="Share your favorite memory with Stacy..."
@@ -78,6 +80,7 @@ export default function MemoryForm() {
             name="photo" 
             type="file" 
             accept="image/*" 
+            autoComplete="off"
             className="mt-1 w-full rounded-xl border border-secondary/20 p-2.5 sm:p-3 text-xs sm:text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-transparent font-body"
           />
           <p className="text-[10px] sm:text-xs text-text-dark/70 mt-1 font-body leading-relaxed">Upload a photo to go with your memory</p>

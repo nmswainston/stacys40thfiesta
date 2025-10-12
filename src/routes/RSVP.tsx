@@ -113,9 +113,9 @@ export default function RSVP(){
           data-netlify-honeypot="_catch"
           onSubmit={handleSubmit}
         >
-          <input type="hidden" name="form-name" value="rsvp" />
+          <input type="hidden" name="form-name" value="rsvp" autoComplete="off" />
           <p className="hidden" aria-hidden="true">
-            <label>Don't fill this out: <input name="_catch" tabIndex={-1} /></label>
+            <label>Don't fill this out: <input name="_catch" tabIndex={-1} autoComplete="off" /></label>
           </p>
           
           <div>
@@ -126,6 +126,7 @@ export default function RSVP(){
               id="rsvp-name"
               name="name" 
               required 
+              autoComplete="name"
               className="mt-1 w-full rounded-xl border border-brand-200 p-2.5 sm:p-3 text-sm sm:text-base focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
               placeholder={z.form.placeholders.name}
               aria-required="true"
@@ -146,6 +147,7 @@ export default function RSVP(){
               name="email" 
               type="email" 
               required 
+              autoComplete="email"
               className="mt-1 w-full rounded-xl border border-brand-200 p-2.5 sm:p-3 text-sm sm:text-base focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
               placeholder={z.form.placeholders.email}
               aria-required="true"
@@ -166,6 +168,7 @@ export default function RSVP(){
               name="phone" 
               type="tel" 
               required 
+              autoComplete="tel"
               className="mt-1 w-full rounded-xl border border-brand-200 p-2.5 sm:p-3 text-sm sm:text-base focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
               placeholder={z.form.placeholders.phone}
               aria-required="true"
@@ -187,6 +190,7 @@ export default function RSVP(){
               type="number" 
               min="1" 
               required
+              autoComplete="off"
               className="mt-1 w-full rounded-xl border border-brand-200 p-2.5 sm:p-3 text-sm sm:text-base focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
               defaultValue={1}
               aria-required="true"

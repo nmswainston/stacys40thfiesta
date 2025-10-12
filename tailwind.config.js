@@ -66,3 +66,4 @@ export default {
   // Minimal config for Tailwind v4
   // All theme configuration is in src/styles/globals.css @theme block
 };
+

@@ -22,7 +22,7 @@ export default function NetlifyForm({ name, onSubmit, children, ...props }: Netl
 
   return (
     <form name={name} onSubmit={handleSubmit} data-netlify="true" {...props}>
-      <input type="hidden" name="form-name" value={name} />
+      <input type="hidden" name="form-name" value={name} autoComplete="off" />
       {children}
     </form>
   );

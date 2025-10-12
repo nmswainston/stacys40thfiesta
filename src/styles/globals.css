@@ -83,7 +83,15 @@ html {
 
 /* Minimal CSS Variables for background images only */
 :root {
-  --western-bg: url('/assets/western-background.svg');
+  /* Mobile-first: use old background for mobile */
+  --western-bg: url('/assets/western-background.old.svg');
+}
+
+/* Desktop: use new background for larger screens */
+@media (min-width: 768px) {
+  :root {
+    --western-bg: url('/assets/western-background.svg');
+  }
 }
 
 /***** Spanish rodeo vibe helpers *****/

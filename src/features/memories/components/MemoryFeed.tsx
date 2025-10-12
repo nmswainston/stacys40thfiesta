@@ -1,10 +1,16 @@
+import { Modal } from "@components/ui";
 import type { Memory } from "@features/memories/types";
 import { useEffect, useState } from "react";
 
-export default function MemoryFeed() {
+interface MemoryFeedProps {
+  showViewAllButton?: boolean;
+}
+
+export default function MemoryFeed({ showViewAllButton = true }: MemoryFeedProps) {
   const [memories, setMemories] = useState<Memory[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchMemories = async () => {
@@ -58,52 +64,81 @@ export default function MemoryFeed() {
   }
 
   return (
-    <div className="space-y-4 sm:space-y-6">
-      <h3 className="font-display text-xl sm:text-2xl text-primary text-center mb-4 sm:mb-6 leading-tight">
-        Memory Wall
-      </h3>
-      
-      <div className="space-y-3 sm:space-y-4">
-        {memories.map((memory) => (
-          <div 
-            key={memory.id} 
-            className="frost-layer-light space-y-2.5 sm:space-y-3"
-          >
-            {memory.photoUrl && (
-              <img 
-                src={memory.photoUrl} 
-                alt={`Memory from ${memory.name}`}
-                className="w-full rounded-lg object-cover max-h-48 sm:max-h-64"
-                loading="lazy"
-                decoding="async"
-                onError={(e) => {
-                  // Hide the image if it fails to load
-                  e.currentTarget.style.display = 'none';
-                  console.error('Failed to load image:', memory.photoUrl);
-                }}
-              />
-            )}
-            
-            <div>
-              <h4 className="font-semibold text-text-dark text-base sm:text-lg font-body leading-tight">
-                {memory.name}
-              </h4>
-              <p className="text-xs sm:text-sm text-text-dark/60 font-body mt-0.5">
-                {new Date(memory.createdAt).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric'
-                })}
+    <>
+      <div className="space-y-4 sm:space-y-6">
+        <h3 className="font-display text-xl sm:text-2xl text-primary text-center mb-4 sm:mb-6 leading-tight">
+          Memory Wall
+        </h3>
+        
+        <div className="space-y-3 sm:space-y-4">
+          {memories.map((memory) => (
+            <div 
+              key={memory.id} 
+              className="frost-layer-light space-y-2.5 sm:space-y-3"
+            >
+              {memory.photoUrl && (
+                <img 
+                  src={memory.photoUrl} 
+                  alt={`Memory from ${memory.name}`}
+                  className="w-full rounded-lg object-cover max-h-48 sm:max-h-64"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    // Hide the image if it fails to load
+                    e.currentTarget.style.display = 'none';
+                    console.error('Failed to load image:', memory.photoUrl);
+                  }}
+                />
+              )}
+              
+              <div>
+                <h4 className="font-semibold text-text-dark text-base sm:text-lg font-body leading-tight">
+                  {memory.name}
+                </h4>
+                <p className="text-xs sm:text-sm text-text-dark/60 font-body mt-0.5">
+                  {new Date(memory.createdAt).toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })}
+                </p>
+              </div>
+              
+              <p className="text-sm sm:text-base text-text-dark leading-relaxed font-body break-words">
+                {memory.message}
               </p>
             </div>
-            
-            <p className="text-sm sm:text-base text-text-dark leading-relaxed font-body break-words">
-              {memory.message}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center pt-2">
+          <p className="text-xs text-text-dark/50 mb-2">Debug: showViewAllButton = {String(showViewAllButton)}, memories = {memories.length}</p>
+          {showViewAllButton ? (
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="btn w-full text-sm sm:text-base"
+            >
+              📸 View All Memories
+            </button>
+          ) : (
+            <p className="text-xs text-red-500">Button hidden (showViewAllButton is false)</p>
+          )}
+        </div>
       </div>
-    </div>
+
+      {/* Memory Wall Modal */}
+      {showViewAllButton && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title="Memory Wall"
+        >
+          <MemoryFeed showViewAllButton={false} />
+        </Modal>
+      )}
+    </>
   );
 }
 

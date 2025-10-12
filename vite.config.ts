@@ -7,6 +7,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({ 
   plugins: [react()],
+  server: {
+    allowedHosts: [
+      'devserver-main--stacys40thfiesta.netlify.app',
+      '.netlify.app', // Allow all Netlify subdomains
+    ],
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

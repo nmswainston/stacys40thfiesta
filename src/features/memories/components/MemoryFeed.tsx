@@ -23,12 +23,7 @@ export default function MemoryFeed({ showViewAllButton = true }: MemoryFeedProps
           throw new Error(statusText);
         }
         const data = await response.json();
-        const memoriesData = data.memories || [];
-        console.log('Loaded memories:', memoriesData);
-        memoriesData.forEach((m: Memory) => {
-          console.log(`Memory ${m.id}: photoUrl =`, m.photoUrl);
-        });
-        setMemories(memoriesData);
+        setMemories(data.memories || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unable to connect - please check your internet connection');
       } finally {
@@ -81,29 +76,19 @@ export default function MemoryFeed({ showViewAllButton = true }: MemoryFeedProps
               key={memory.id} 
               className="frost-layer-light space-y-2.5 sm:space-y-3"
             >
-            {memory.photoUrl ? (
-              <div>
-                <p className="text-xs text-blue-600 mb-1 break-all">Photo data type: {typeof memory.photoUrl}</p>
-                <p className="text-xs text-blue-600 mb-1 break-all">Photo data: {JSON.stringify(memory.photoUrl)}</p>
-                {typeof memory.photoUrl === 'string' ? (
-                  <img 
-                    src={memory.photoUrl} 
-                    alt={`Memory from ${memory.name}`}
-                    className="w-full rounded-lg object-cover max-h-48 sm:max-h-64"
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => {
-                      // Hide the image if it fails to load
-                      e.currentTarget.style.display = 'none';
-                      console.error('Failed to load image:', memory.photoUrl);
-                    }}
-                  />
-                ) : (
-                  <p className="text-xs text-red-600">Photo is not a string URL - it's an object!</p>
-                )}
-              </div>
-            ) : (
-              <p className="text-xs text-orange-600">No photo attached to this memory</p>
+            {memory.photoUrl && (
+              <img 
+                src={memory.photoUrl} 
+                alt={`Memory from ${memory.name}`}
+                className="w-full rounded-lg object-cover max-h-48 sm:max-h-64"
+                loading="lazy"
+                decoding="async"
+                onError={(e) => {
+                  // Hide the image if it fails to load
+                  e.currentTarget.style.display = 'none';
+                  console.error('Failed to load image:', memory.photoUrl);
+                }}
+              />
             )}
               
               <div>

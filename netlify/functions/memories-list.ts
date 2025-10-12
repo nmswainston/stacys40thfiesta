@@ -37,8 +37,12 @@ export const handler = async () => {
         // Netlify stores uploaded files in the uploads array
         photoUrl = s.uploads[0].url;
       } else if (data.photo) {
-        // Fallback to data.photo if available
-        photoUrl = data.photo;
+        // data.photo can be a string URL or an object with a url property
+        if (typeof data.photo === 'string') {
+          photoUrl = data.photo;
+        } else if (typeof data.photo === 'object' && data.photo.url) {
+          photoUrl = data.photo.url;
+        }
       }
       
       return {

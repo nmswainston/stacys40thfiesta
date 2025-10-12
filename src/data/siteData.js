@@ -17,57 +17,57 @@ const site = {
   sections: {
     agenda: {
       heading: "Agenda",
-      subheading: "Your guide to the weekend festivities."
+      subheading: "Details will be finalized closer to the fiesta."
     },
     rsvp: {
-      heading: "RSVP",
+      heading: "Pony Up",
       description: "Join us in celebrating Stacy's milestone birthday! Please RSVP below.",
       ctaButton: "Complete RSVP Form →"
     },
     stay: {
-      heading: "Where We're Staying",
-      description: "Our Rocky Point home base for Stacy's 40th. Sun-soaked, comfy, and close to everything. This is where we'll all be staying!",
+      heading: "Where We'll Hang Our Hats",
+      description: "One casa. One crew. Where memories run wild.",
       ctaButton: "View Full Airbnb Details →"
     },
     memories: {
-      heading: "Share a Memory",
-      description: "Share your favorite stories, photos, or messages for Stacy!"
+      heading: "Drop A Memory In The Corral",
+      description: "Dust off your favorite stacy stories, and show 'em off (Photos wanted!)"
     },
     carpool: {
-      heading: "Carpool",
-      description: "Driving from Arizona? Let's coordinate rides to maximize fun and minimize parking chaos!",
+      heading: "Wagon Train",
+      description: "Hitting the dusty trail from Arizona? Let's ride out together!",
       offeringCard: {
         icon: "🚗",
         title: "Offering a Ride?",
-        description: "Got extra seats? Help fellow guests get to Rocky Point!"
+        description: "Got extra seats in your stagecoach? Drop your deets below."
       },
       needingCard: {
         icon: "🙋",
         title: "Need a Ride?",
-        description: "Looking for a lift? Connect with drivers below."
+        description: "Need a seat in a wagon? Drop your deets below."
       },
       formHeading: "Sign Up for Carpool"
     }
   },
 
   rsvp: {
-    pageHeading: "RSVP & Deposit",
-    depositNote: "$200 per person by Nov 9. Fully refundable through April per house policy.",
+    heading: "Pony Up",
+    depositNote: "Final round up rate: $250 - $325 per person (amount depends on how many of us saddle up!)\n\nThe house has been fully paid and booked—this is why payments are requested early.",
     
     howItWorks: {
-      heading: "How It Works",
+      heading: "Secure Your Saddle",
       steps: [
         {
-          title: "Fill in your details",
-          description: "Use the form below to let us know you're coming."
+          title: "Fill in your deets",
+          description: "Holler below if you're ridin' with us."
         },
         {
-          title: "Send the $200 per person deposit via Zelle",
-          description: "Quick and easy, no fees."
+          title: "Deposit: $200 per person via Zelle",
+          description: "Deadline: Sunday, November 2, 2025"
         },
         {
-          title: "Get a confirmation email with your status",
-          description: "We'll follow up within 48 hours."
+          title: "Final payment",
+          description: "Deadline: Sunday, December 7, 2025"
         }
       ]
     },
@@ -90,33 +90,27 @@ const site = {
     zelleBlock: {
       heading: "Payment by Zelle",
       name: "Stacy",
-      handle: "Stacy's phone number",
+      handle: "(Stacy's phone number)",
       memo: "Stacy40 + <Your Name>",
-      refundPolicy: "Fully refundable until April 1, 2026 per house policy.",
       copyButton: "Copy",
-      copiedButton: "✓ Copied!",
-      confirmationNote: "We'll mark you as confirmed once deposit is received."
+      copiedButton: "✓ Copied!"
     },
 
     questions: {
-      heading: "Questions?",
-      text: "Text Nick. If plans change, we'll update this page first."
+      heading: "Shoot Your Questions?",
+      text: "Wrangle Nick if you have questions."
     },
 
     whatHappensAfter: {
       heading: "What Happens After",
       items: [
         {
-          title: "We group room assignments",
-          description: "We'll coordinate housing based on your party size and preferences."
+          title: "Room round-up time",
+          description: "Couples will lasso their own private quarters first."
         },
         {
           title: "We send the full schedule as we lock items",
           description: "You'll get updates as activities and reservations are confirmed."
-        },
-        {
-          title: "Refund window: fully refundable until April 1, 2026",
-          description: "Plans change, we get it."
         }
       ]
     },
@@ -126,51 +120,53 @@ const site = {
 
   agenda: [
     { 
-      day: "Friday Day", 
-      title: "Margs and Milestones", 
-      details: "Chef brunch + margaritas fiesta.",
-      time: "Late morning–afternoon",
+      day: "Friday\nDay", 
+      title: "Margs & Milestones", 
+      details: "Private chef taco bar+ margaritas",
+      time: "All day",
       estimatedCost: "$40 - $60",
       icon: "🍹" 
     },
     { 
-      day: "Friday Night", 
+      day: "Friday\nNight", 
       title: "Denim & Diamonds", 
-      details: "Dinner @ Mare Blu", 
-      link: "https://www.marebluristorante.com/", 
+      details: "Dinner at Mare Blu Ristorante", 
+      link: "https://www.marebluristorante.com/",
+      linkText: "View Menu",
       time: "7:00 PM", 
       icon: "✨" 
     },
     { 
       day: "Saturday Night", 
       title: "Sunset Booze Cruise", 
-      details: "Golden hour on the water.",
-      link: "https://www.rockypointsunsetcruise.com/"
-      time: "5:30 PM – sunset",
+      details: "Golden hour on the water",
+      link: "https://www.rockypointsunsetcruise.com/",
+      linkText: "Cruise Info",
+      time: "5:30 PM",
       estimatedCost: "$30", 
       icon: "⛵" 
     },
   ],
 
   stay: {
-    pageHeading: "Stay",
-    pageDescription: "Our Rocky Point home base for Stacy's 40th. Peek the photos, skim the details, then book or view the full listing on Airbnb.",
+    heading: "Stay",
+    description: "Our Rocky Point bunkhouse for Stacy's 40th fiesta weekend.",
     airbnbUrl: "https://www.airbnb.com/l/GWid9RDo",
     ctaButton: "View on Airbnb →",
     
     amenities: [
-      "Sleeps 8+",
-      "3 Bedrooms",
-      "2.5 Bathrooms",
+      "5 Bedrooms",
+      "Sleeps 16",
+      "6.5 Bathrooms",
       "Pool & Hot Tub",
-      "Full Kitchen",
-      "Wi‑Fi & Workspace",
       "Parking On‑site",
+      "Full Kitchen",
+      "Ocean View",
       "Washer/Dryer"
     ],
 
     photoGallery: {
-      heading: "Photo highlights",
+      heading: "Casa del Celebration",
       seeMoreButton: "See more on Airbnb"
     },
 
@@ -216,10 +212,9 @@ const site = {
   travel: {
     heading: "Travel & Tips",
     tips: [
-      "Bring passport or passport card.",
-      "Carpool encouraged; parking is limited.",
-      "ATMs available; many places accept cards.",
-      "Weather can be breezy at night near the water."
+      "Bring passport and ID.",
+      "If flying in, fly into Phoenix Sky Harbor Airport and carpool the 3.5 hour drive to Rocky Point.",
+      "Special car insurance is encouraged for driving to Mexico."
     ]
   },
 
@@ -284,6 +279,27 @@ const site = {
   theme: {
     accent: "brand-600",
     denimTexture: "/assets/denim.png"
+  },
+
+  navigation: {
+    homeScroll: [
+      { label: "Home", id: "welcome" },
+      { label: "Agenda", id: "agenda" },
+      { label: "RSVP", id: "rsvp" },
+      { label: "Stay", id: "stay" },
+      { label: "Memories", id: "memories" },
+      { label: "Carpool", id: "carpool" },
+      { label: "Travel", id: "travel" }
+    ],
+    otherPages: [
+      { label: "Home", path: "/" },
+      { label: "Agenda", path: "/agenda" },
+      { label: "RSVP", path: "/rsvp" },
+      { label: "Stay", path: "/stay" },
+      { label: "Memories", path: "/memories" },
+      { label: "Carpool", path: "/carpool" },
+      { label: "Travel", path: "/travel" }
+    ]
   }
 };
 

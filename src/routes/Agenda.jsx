@@ -21,6 +21,7 @@ export default function Agenda(){
             <div className="text-sm opacity-80 mt-1">{s.details}</div>
             {s.link && <a className="link mt-2 inline-block" href={s.link} target="_blank" rel="noreferrer">Learn more</a>}
             <div className="text-sm mt-3">🕐 {s.time}</div>
+            {s.estimatedCost && <div className="text-sm opacity-70 mt-1">💰 {s.estimatedCost}</div>}
           </article>
         ))}
           </div>

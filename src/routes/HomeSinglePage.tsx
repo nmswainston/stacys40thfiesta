@@ -22,6 +22,7 @@ export default function HomeSinglePage() {
     stay: useRef<HTMLElement>(null),
     memories: useRef<HTMLElement>(null),
     carpool: useRef<HTMLElement>(null),
+    travel: useRef<HTMLElement>(null),
   };
 
   function calculateTimeLeft() {
@@ -116,11 +117,7 @@ export default function HomeSinglePage() {
                 {/* Hero Title with Stylized 40 */}
                 <div className="mt-3 sm:mt-4">
                   <h1 className="text-4xl sm:text-6xl md:text-7xl font-display text-primary leading-tight tracking-wide">
-                    {site.hero.mainTitle}{" "}
-                    <span className="font-accent text-5xl sm:text-7xl md:text-8xl text-accent inline-block">
-                      {site.hero.ageNumber}
-                    </span>
-                    <span className="text-3xl sm:text-5xl md:text-6xl align-middle">{site.hero.ageSuffix}</span>
+                    {site.hero.mainTitle}
                   </h1>
                 </div>
 
@@ -192,8 +189,8 @@ export default function HomeSinglePage() {
                     loading="lazy"
                   />
                   <div className="text-sm sm:text-base font-medium text-text-dark/80 font-body tracking-normal text-center">
-                    <div className="block">{site.meta.date}</div>
-                    <div className="block">{site.meta.locationCity}</div>
+                    <div className="block">{site.hero.date}</div>
+                    <div className="block">{site.hero.location}</div>
                   </div>
                 </div>
 
@@ -231,24 +228,52 @@ export default function HomeSinglePage() {
               </div>
               <div className="relative grid md:grid-cols-3 gap-6 mt-8">
                 {site.agenda.map((s, i) => (
-                  <article key={i} className="card-base focus-within:ring-2 focus-within:ring-primary/50">
-                    <div className="text-2xl" role="img" aria-label={`${s.title} icon`}>
-                      {s.icon}
+                  <article key={i} className="card-base focus-within:ring-2 focus-within:ring-primary/50 flex flex-col h-full">
+                    {/* Header with icon and day */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="text-3xl flex-shrink-0" role="img" aria-label={`${s.title} icon`}>
+                        {s.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-extrabold text-primary font-display tracking-wide leading-tight whitespace-pre-line">{s.day}</h3>
+                        <div className="font-semibold text-text-dark font-body tracking-normal leading-tight">{s.title}</div>
+                      </div>
                     </div>
-                    <h3 className="text-xl font-extrabold mt-2 text-primary font-display tracking-wide">{s.day}</h3>
-                    <div className="font-semibold mt-1 font-body tracking-normal text-text-dark">{s.title}</div>
-                    <div className="text-sm mt-1 font-body tracking-normal text-text-dark/80">{s.details}</div>
+                    
+                    {/* Description */}
+                    <div className="text-sm font-body tracking-normal text-text-dark/80 mb-4 flex-1">
+                      {s.details}
+                    </div>
+                    
+                    {/* Learn more link */}
                     {s.link && (
-                      <a
-                        className="text-secondary hover:text-primary underline mt-2 inline-block font-body tracking-normal focus-ring"
-                        href={s.link}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Learn more
-                      </a>
+                      <div className="mb-4">
+                        <a
+                          className="text-secondary hover:text-primary underline font-body tracking-normal focus-ring text-sm font-medium"
+                          href={s.link}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {s.linkText || "View Details"} →
+                        </a>
+                      </div>
                     )}
-                    <div className="text-sm mt-3 font-body tracking-normal text-text-dark/80">🕐 {s.time}</div>
+                    
+                    {/* Time and cost footer */}
+                    <div className="mt-auto pt-3 border-t border-secondary/20">
+                      <div className="flex items-center justify-between text-sm">
+                        <div className="flex items-center gap-2 text-text-dark/80">
+                          <span className="text-accent">🕐</span>
+                          <span className="font-body tracking-normal">{s.time}</span>
+                        </div>
+                        {s.estimatedCost && (
+                          <div className="flex items-center gap-2 text-text-dark/70">
+                            <span className="text-accent">💰</span>
+                            <span className="font-body tracking-normal font-medium">{s.estimatedCost}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </article>
                 ))}
               </div>
@@ -407,6 +432,33 @@ export default function HomeSinglePage() {
                 <div className="lg:sticky lg:top-24 lg:self-start">
                   <CarpoolBulletinBoard />
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== TRAVEL SECTION ===== */}
+        <section 
+          id="travel" 
+          ref={sectionRefs.travel}
+          className="scroll-mt-24 bg-transparent py-16 md:py-24"
+        >
+          <div className="container mx-auto px-6 md:px-8 max-w-4xl">
+            <div className="relative">
+              {/* Cream fade overlay for readability */}
+              <div className="absolute inset-x-0 -top-8 h-48 pointer-events-none bg-cream-fade" aria-hidden="true" />
+              
+              <div className="relative text-center mb-8">
+                <h2 className="font-display text-3xl md:text-4xl text-primary tracking-wide">{site.travel.heading}</h2>
+                <div className="rule-ornate mt-6 mx-auto" />
+              </div>
+              
+              <div className="relative grid gap-4 mt-8">
+                {site.travel.tips.map((tip, i) => (
+                  <div key={i} className="frost-layer text-left">
+                    <p className="text-sm font-body tracking-normal text-text-dark/80">{tip}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

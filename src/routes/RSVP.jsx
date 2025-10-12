@@ -6,7 +6,6 @@ import site from "../data/siteData";
 export default function RSVP(){
   const [searchParams] = useSearchParams();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [showZelleCopied, setShowZelleCopied] = useState(false);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const z = site.rsvp;
@@ -51,18 +50,12 @@ export default function RSVP(){
     // Note: This won't actually prevent the form from submitting
   };
 
-  const copyZelleInfo = () => {
-    const zelleText = `Zelle to: ${z.zelleBlock.name}\nHandle: ${z.zelleBlock.handle}\nMemo: ${z.zelleBlock.memo}`;
-    navigator.clipboard.writeText(zelleText);
-    setShowZelleCopied(true);
-    setTimeout(() => setShowZelleCopied(false), 2000);
-  };
 
   return (
     <section className="bg-western-overlay py-14">
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-10">
-          <h1 className="text-western-display text-4xl text-ink">{z.pageHeading}</h1>
+          <h1 className="text-western-display text-4xl text-ink">{z.heading}</h1>
           <div className="rule-ornate mt-3 mx-auto" />
           <p className="mt-6 text-brand-700 font-semibold">{z.depositNote}</p>
         </div>
@@ -172,7 +165,7 @@ export default function RSVP(){
           </div>
 
           <div className="mt-8 pt-4 border-t border-brand-200">
-            <button type="submit" className="btn w-full py-4 text-lg font-bold shadow-lg">
+            <button type="submit" className="btn w-full">
               {z.form.submitButton}
             </button>
           </div>
@@ -180,24 +173,27 @@ export default function RSVP(){
 
         <aside className="space-y-4">
           <div className="card-base border-2 border-brand-300">
-            <h3 className="text-xl font-extrabold text-ink">{z.zelleBlock.heading}</h3>
-            <div className="mt-4 bg-brand-50 border border-brand-200 rounded-lg p-4">
-              <ul className="text-sm space-y-2">
-                <li><span className="text-muted">Name:</span> <strong>{z.zelleBlock.name}</strong></li>
-                <li><span className="text-muted">Handle:</span> <strong>{z.zelleBlock.handle}</strong></li>
-                <li><span className="text-muted">Memo:</span> <strong>{z.zelleBlock.memo}</strong></li>
-              </ul>
-              <button 
-                type="button"
-                onClick={copyZelleInfo}
-                className="mt-3 text-xs btn w-full"
-                aria-label="Copy Zelle information to clipboard"
-              >
-                {showZelleCopied ? z.zelleBlock.copiedButton : z.zelleBlock.copyButton}
-              </button>
+            <h3 className="text-xl font-extrabold text-ink mb-4">{z.zelleBlock.heading}</h3>
+            <div className="bg-brand-50 border border-brand-200 rounded-lg p-5">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-brand-700 font-medium">Name:</span>
+                  <span className="text-sm font-semibold text-ink">{z.zelleBlock.name}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-brand-700 font-medium">Handle:</span>
+                  <span className="text-sm font-semibold text-ink">{z.zelleBlock.handle}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-brand-700 font-medium">Memo:</span>
+                  <span className="text-sm font-semibold text-ink">{z.zelleBlock.memo}</span>
+                </div>
+              </div>
             </div>
-            <p className="text-xs text-muted mt-4 italic">{z.zelleBlock.refundPolicy}</p>
-            <p className="text-xs text-brand-600 mt-2">{z.zelleBlock.confirmationNote}</p>
+            <div className="mt-4 space-y-2">
+              <p className="text-xs text-brand-600/80 italic">{z.zelleBlock.refundPolicy}</p>
+              <p className="text-xs text-brand-600 font-medium">{z.zelleBlock.confirmationNote}</p>
+            </div>
           </div>
 
           <div className="card-base">

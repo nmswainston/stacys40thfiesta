@@ -18,15 +18,9 @@ export default function LayoutSinglePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Navigation items for single-page scroll
-  const scrollNavItems = [
-    { label: "Home", id: "welcome" },
-    { label: "Agenda", id: "agenda" },
-    { label: "RSVP", id: "rsvp" },
-    { label: "Stay", id: "stay" },
-    { label: "Memories", id: "memories" },
-    { label: "Carpool", id: "carpool" },
-  ];
+  // Navigation items from site data
+  const scrollNavItems = site.navigation.homeScroll;
+  const otherPageNavItems = site.navigation.otherPages;
 
   // Function to handle smooth scroll to section
   const handleScrollToSection = (e, sectionId) => {
@@ -98,25 +92,18 @@ export default function LayoutSinglePage() {
                 })
               ) : (
                 // Regular navigation for other pages
-                [
-                  ["Home", "/"],
-                  ["Stay", "/stay"],
-                  ["Agenda", "/agenda"],
-                  ["RSVP", "/rsvp"],
-                  ["Memories", "/memories"],
-                  ["Travel", "/travel"],
-                ].map(([label, to]) => (
+                otherPageNavItems.map((item) => (
                   <NavLink
-                    key={to}
-                    to={to}
+                    key={item.path}
+                    to={item.path}
                     className={({ isActive }) =>
                       `smallcaps px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-brand-700/90 hover:text-brand-700 rounded focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 whitespace-nowrap ${
                         isActive ? "underline decoration-brand-400" : "hover:underline decoration-brand-400/70"
                       }`
                     }
-                    aria-label={`Navigate to ${label}`}
+                    aria-label={`Navigate to ${item.label}`}
                   >
-                    {label}
+                    {item.label}
                   </NavLink>
                 ))
               )}
@@ -142,26 +129,15 @@ export default function LayoutSinglePage() {
                 </a>
               ))
             ) : (
-              <>
-                <NavLink to="/stay" className="link hover:text-brand-700 focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 rounded px-2 py-1 whitespace-nowrap">
-                  Stay
+              otherPageNavItems.filter(item => item.path !== "/").map((item) => (
+                <NavLink 
+                  key={item.path} 
+                  to={item.path} 
+                  className="link hover:text-brand-700 focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 rounded px-2 py-1 whitespace-nowrap"
+                >
+                  {item.label}
                 </NavLink>
-                <NavLink to="/agenda" className="link hover:text-brand-700 focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 rounded px-2 py-1 whitespace-nowrap">
-                  Agenda
-                </NavLink>
-                <NavLink to="/rsvp" className="link hover:text-brand-700 focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 rounded px-2 py-1 whitespace-nowrap">
-                  RSVP
-                </NavLink>
-                <NavLink to="/memories" className="link hover:text-brand-700 focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 rounded px-2 py-1 whitespace-nowrap">
-                  Share a Memory
-                </NavLink>
-                <NavLink to="/carpool" className="link hover:text-brand-700 focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 rounded px-2 py-1 whitespace-nowrap">
-                  Carpool
-                </NavLink>
-                <NavLink to="/travel" className="link hover:text-brand-700 focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 rounded px-2 py-1 whitespace-nowrap">
-                  Travel
-                </NavLink>
-              </>
+              ))
             )}
           </nav>
           <p className="text-xs sm:text-sm">© 2025 • Stacy's 40th Celebration</p>

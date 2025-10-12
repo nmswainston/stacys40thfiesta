@@ -1,7 +1,7 @@
 import { ROUTES } from "@/constants";
 import { useActiveSection } from "@/hooks";
 import site from "@data/siteData";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 export default function LayoutSinglePage() {
@@ -243,7 +243,16 @@ export default function LayoutSinglePage() {
       </div>
 
       <main id="main-content" className="text-ink pt-20" role="main">
-        <Outlet />
+        <Suspense fallback={
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto mb-4"></div>
+              <p className="text-brand-700 font-body">Loading...</p>
+            </div>
+          </div>
+        }>
+          <Outlet />
+        </Suspense>
       </main>
       <footer className="py-6 sm:py-8 md:py-10 text-center text-sm opacity-70 text-ink border-t border-brand-200 mt-8 sm:mt-12" role="contentinfo">
         <div className="max-w-6xl mx-auto px-4">

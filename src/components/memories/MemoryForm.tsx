@@ -13,13 +13,13 @@ export default function MemoryForm() {
 
   return (
     <div>
-      <h3 className="font-display text-2xl text-primary text-center mb-4">Share a Favorite Stacy Memory</h3>
-      <p className="mt-2 text-sm text-text-dark/80 font-body text-center mb-6">
+      <h3 className="font-display text-xl sm:text-2xl text-primary text-center mb-3 sm:mb-4 leading-tight">Share a Favorite Stacy Memory</h3>
+      <p className="mt-2 text-xs sm:text-sm text-text-dark/80 font-body text-center mb-4 sm:mb-6 leading-relaxed">
         Everything posted here appears on the site and in our weekend slideshow.
       </p>
 
       <form 
-        className="space-y-4 text-left" 
+        className="space-y-3 sm:space-y-4 text-left" 
         name="memories" 
         method="POST" 
         data-netlify="true" 
@@ -40,64 +40,50 @@ export default function MemoryForm() {
         />
 
         <div>
-          <label htmlFor="memory-name" className="block text-sm font-semibold text-text-dark font-body">
+          <label htmlFor="memory-name" className="block text-xs sm:text-sm font-semibold text-text-dark font-body">
             Your Name<span className="text-red-600">*</span>
           </label>
           <input 
             id="memory-name"
             name="name" 
             required 
-            className="mt-1 w-full rounded-xl border border-secondary/20 p-3 focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-transparent font-body" 
+            className="mt-1 w-full rounded-xl border border-secondary/20 p-2.5 sm:p-3 text-sm sm:text-base focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-transparent font-body" 
             placeholder="Your name"
             aria-required="true"
           />
         </div>
 
         <div>
-          <label htmlFor="memory-email" className="block text-sm font-semibold text-text-dark font-body">
-            Email (optional)
-          </label>
-          <input 
-            id="memory-email"
-            name="email"
-            type="email"
-            className="mt-1 w-full rounded-xl border border-secondary/20 p-3 focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-transparent font-body" 
-            placeholder="your.email@example.com"
-          />
-          <p className="text-xs text-text-dark/70 mt-1 font-body">Never displayed publicly</p>
-        </div>
-
-        <div>
-          <label htmlFor="memory-message" className="block text-sm font-semibold text-text-dark font-body">
+          <label htmlFor="memory-message" className="block text-xs sm:text-sm font-semibold text-text-dark font-body">
             Your Memory<span className="text-red-600">*</span>
           </label>
           <textarea 
             id="memory-message"
             name="message" 
             required
-            className="mt-1 w-full rounded-xl border border-secondary/20 p-3 focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-transparent font-body" 
+            className="mt-1 w-full rounded-xl border border-secondary/20 p-2.5 sm:p-3 text-sm sm:text-base focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-transparent font-body leading-relaxed" 
             rows={5} 
             placeholder="Share your favorite memory with Stacy..."
             aria-required="true"
           />
-          <p className="text-xs text-text-dark/70 mt-1 font-body">Share the details - the funnier, the better!</p>
+          <p className="text-[10px] sm:text-xs text-text-dark/70 mt-1 font-body leading-relaxed">Share the details - the funnier, the better!</p>
         </div>
 
         <div>
-          <label htmlFor="memory-photo" className="block text-sm font-semibold text-text-dark font-body">
-            Photo (optional)
+          <label htmlFor="memory-photo" className="block text-xs sm:text-sm font-semibold text-text-dark font-body">
+            Photo (encouraged!)
           </label>
           <input 
             id="memory-photo"
             name="photo" 
             type="file" 
             accept="image/*" 
-            className="mt-1 w-full rounded-xl border border-secondary/20 p-3 focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-transparent font-body"
+            className="mt-1 w-full rounded-xl border border-secondary/20 p-2.5 sm:p-3 text-xs sm:text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-transparent font-body"
           />
-          <p className="text-xs text-text-dark/70 mt-1 font-body">Upload a photo to go with your memory</p>
+          <p className="text-[10px] sm:text-xs text-text-dark/70 mt-1 font-body leading-relaxed">Upload a photo to go with your memory</p>
         </div>
 
-        <button type="submit" className="btn w-full">Share Memory</button>
+        <button type="submit" className="btn w-full text-sm sm:text-base">Share Memory</button>
       </form>
     </div>
   );

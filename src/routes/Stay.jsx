@@ -27,36 +27,36 @@ export default function Stay() {
     // Note: Keep bg-transparent here to show the western background from LayoutSinglePage
     <div className="min-h-screen text-ink bg-transparent">
       {/* Header */}
-      <section className="mx-auto max-w-6xl p-6 md:p-10">
-        <h1 className="text-3xl md:text-5xl font-semibold">{site.stay.heading}</h1>
-        <p className="mt-2 max-w-2xl text-ink/80 text-sm md:text-base">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 md:px-10 py-6 md:py-10">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">{site.stay.heading}</h1>
+        <p className="mt-3 sm:mt-4 max-w-2xl text-ink/80 text-sm sm:text-base leading-relaxed">
           {site.stay.description}
         </p>
-        <div className="mt-6">
-          <a href={AIRBNB_URL} target="_blank" className="btn" rel="noreferrer">
+        <div className="mt-6 sm:mt-8">
+          <a href={AIRBNB_URL} target="_blank" className="btn text-sm sm:text-base" rel="noreferrer">
             {site.stay.ctaButton}
           </a>
         </div>
       </section>
 
       {/* Fast facts */}
-      <section className="mx-auto max-w-6xl p-6 md:p-10">
-        <div className="grid gap-4 md:grid-cols-4">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 md:px-10 py-6 md:py-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
           {site.stay.amenities.slice(0, 8).map((a, i) => (
-            <div key={i} className="text-center">
-              <p className="text-sm font-semibold">{a}</p>
+            <div key={i} className="frost-layer text-center">
+              <p className="text-xs sm:text-sm font-semibold break-words leading-relaxed">{a}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Gallery */}
-      <section className="mx-auto max-w-6xl p-6 md:p-10">
-        <h2 className="text-xl md:text-2xl font-semibold">{site.stay.photoGallery.heading}</h2>
-        <div className="mt-6 space-y-4 md:space-y-6">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 md:px-10 py-6 md:py-10">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">{site.stay.photoGallery.heading}</h2>
+        <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4 md:space-y-6">
           {/* Hero image - larger */}
           <button
-            className="group relative aspect-[16/9] w-full overflow-hidden rounded-2xl frost-layer-light"
+            className="group relative aspect-[16/9] w-full overflow-hidden rounded-xl sm:rounded-2xl frost-layer-light"
             onClick={() => window.open(photos[0], "_blank")}
             aria-label="Open hero photo"
           >
@@ -64,11 +64,11 @@ export default function Stay() {
           </button>
           
           {/* 3-column grid for remaining photos */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {photos.slice(1).map((photo, index) => (
               <button
                 key={index}
-                className="group relative aspect-[4/3] overflow-hidden rounded-2xl frost-layer-light"
+                className="group relative aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl frost-layer-light"
                 onClick={() => window.open(photo, "_blank")}
                 aria-label={`Open photo ${index + 2}`}
               >
@@ -81,8 +81,8 @@ export default function Stay() {
             ))}
           </div>
         </div>
-        <div className="mt-8">
-          <a href={AIRBNB_URL} target="_blank" rel="noreferrer" className="btn">
+        <div className="mt-6 sm:mt-8">
+          <a href={AIRBNB_URL} target="_blank" rel="noreferrer" className="btn text-sm sm:text-base">
             {site.stay.photoGallery.seeMoreButton}
           </a>
         </div>

@@ -27,53 +27,53 @@ export default function MemoryFeed() {
 
   if (loading) {
     return (
-      <div className="text-center py-8">
-        <p className="text-text-dark/70 font-body">Loading memories...</p>
+      <div className="text-center py-6 sm:py-8">
+        <p className="text-text-dark/70 font-body text-sm sm:text-base">Loading memories...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="text-center py-8">
-        <p className="text-red-600 font-body">Error: {error}</p>
+      <div className="text-center py-6 sm:py-8">
+        <p className="text-red-600 font-body text-sm sm:text-base">Error: {error}</p>
       </div>
     );
   }
 
   if (memories.length === 0) {
     return (
-      <div className="text-center py-8">
-        <p className="text-text-dark/70 font-body">No memories yet. Be the first to share!</p>
+      <div className="text-center py-6 sm:py-8">
+        <p className="text-text-dark/70 font-body text-sm sm:text-base leading-relaxed">No memories yet. Be the first to share!</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
-      <h3 className="font-display text-2xl text-primary text-center mb-6">
+    <div className="space-y-4 sm:space-y-6">
+      <h3 className="font-display text-xl sm:text-2xl text-primary text-center mb-4 sm:mb-6 leading-tight">
         Memory Wall
       </h3>
       
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {memories.map((memory) => (
           <div 
             key={memory.id} 
-            className="frost-layer-light space-y-3"
+            className="frost-layer-light space-y-2.5 sm:space-y-3"
           >
             {memory.photoUrl && (
               <img 
                 src={memory.photoUrl} 
                 alt={`Memory from ${memory.name}`}
-                className="w-full rounded-lg object-cover max-h-64"
+                className="w-full rounded-lg object-cover max-h-48 sm:max-h-64"
               />
             )}
             
             <div>
-              <h4 className="font-semibold text-text-dark text-lg font-body">
+              <h4 className="font-semibold text-text-dark text-base sm:text-lg font-body leading-tight">
                 {memory.name}
               </h4>
-              <p className="text-sm text-text-dark/60 font-body">
+              <p className="text-xs sm:text-sm text-text-dark/60 font-body mt-0.5">
                 {new Date(memory.createdAt).toLocaleDateString('en-US', {
                   month: 'long',
                   day: 'numeric',
@@ -82,7 +82,7 @@ export default function MemoryFeed() {
               </p>
             </div>
             
-            <p className="text-base text-text-dark leading-relaxed font-body">
+            <p className="text-sm sm:text-base text-text-dark leading-relaxed font-body break-words">
               {memory.message}
             </p>
           </div>

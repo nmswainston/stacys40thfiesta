@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { fireConfetti } from "../lib/confetti";
 import site from "../data/siteData";
 
 export default function RSVP(){
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -50,28 +50,60 @@ export default function RSVP(){
     // Note: This won't actually prevent the form from submitting
   };
 
+  const closeSuccessMessage = () => {
+    setIsSubmitted(false);
+    setSearchParams({});
+  };
+
+  // Success overlay
+  if (isSubmitted) {
+    return (
+      <section className="bg-western-overlay py-8 sm:py-12 md:py-14 min-h-screen flex items-center justify-center">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+          <div className="card-base p-6 sm:p-8 md:p-10">
+            <div className="text-5xl sm:text-6xl mb-4" role="img" aria-label="party popper">🎉</div>
+            <h1 className="text-western-display text-2xl sm:text-3xl md:text-4xl text-ink leading-tight">Thanks for Ponying Up!</h1>
+            <p className="opacity-80 mt-3 sm:mt-4 text-base sm:text-lg text-ink leading-relaxed">
+              We've received your RSVP! Don't forget to send your deposit via Zelle to secure your spot.
+            </p>
+            <div className="mt-6 sm:mt-8 flex gap-3 sm:gap-4 justify-center flex-wrap">
+              <Link to="/" className="btn text-sm sm:text-base">
+                Back to Home
+              </Link>
+              <Link to="/agenda" className="btn text-sm sm:text-base">
+                View Agenda
+              </Link>
+              <button onClick={closeSuccessMessage} className="btn bg-brand-100 text-brand-700 hover:bg-brand-200 text-sm sm:text-base">
+                Submit Another
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section className="bg-western-overlay py-14">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-10">
-          <h1 className="text-western-display text-4xl text-ink">{z.heading}</h1>
-          <div className="rule-ornate mt-3 mx-auto" />
-          <p className="mt-6 text-brand-700 font-semibold">{z.depositNote}</p>
+    <section className="bg-western-overlay py-8 sm:py-12 md:py-14">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <h1 className="text-western-display text-2xl sm:text-3xl md:text-4xl text-ink leading-tight">{z.heading}</h1>
+          <div className="rule-ornate mt-3 sm:mt-4 mx-auto" />
+          <p className="mt-4 sm:mt-6 text-brand-700 font-semibold text-sm sm:text-base leading-relaxed max-w-xl mx-auto">{z.depositNote}</p>
         </div>
 
-        <div className="card-base max-w-2xl mx-auto mb-8">
-          <h2 className="text-2xl font-extrabold text-ink mb-4">{z.howItWorks.heading}</h2>
-          <ol className="space-y-3 list-decimal list-inside">
+        <div className="card-base max-w-2xl mx-auto mb-6 sm:mb-8">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-ink mb-3 sm:mb-4">{z.howItWorks.heading}</h2>
+          <ol className="space-y-2.5 sm:space-y-3 list-decimal list-inside text-sm sm:text-base">
             {z.howItWorks.steps.map((step, i) => (
-              <li key={i} className="text-ink"><strong>{step.title}</strong> — {step.description}</li>
+              <li key={i} className="text-ink leading-relaxed break-words"><strong>{step.title}</strong> — {step.description}</li>
             ))}
           </ol>
         </div>
 
-      <div className="grid md:grid-cols-2 gap-8 mt-8">
+      <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mt-6 sm:mt-8">
         <form 
-          className="card-base space-y-4" 
+          className="card-base space-y-3 sm:space-y-4" 
           name="rsvp" 
           method="POST" 
           data-netlify="true" 
@@ -85,14 +117,14 @@ export default function RSVP(){
           </p>
           
           <div>
-            <label htmlFor="rsvp-name" className="block text-sm font-semibold text-ink">
+            <label htmlFor="rsvp-name" className="block text-xs sm:text-sm font-semibold text-ink">
               {z.form.labels.name}<span className="text-red-600"></span>
             </label>
             <input 
               id="rsvp-name"
               name="name" 
               required 
-              className="mt-1 w-full rounded-xl border border-brand-200 p-3 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
+              className="mt-1 w-full rounded-xl border border-brand-200 p-2.5 sm:p-3 text-sm sm:text-base focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
               placeholder={z.form.placeholders.name}
               aria-required="true"
               onBlur={handleBlur}
@@ -104,7 +136,7 @@ export default function RSVP(){
           </div>
 
           <div>
-            <label htmlFor="rsvp-email" className="block text-sm font-semibold text-ink">
+            <label htmlFor="rsvp-email" className="block text-xs sm:text-sm font-semibold text-ink">
               {z.form.labels.email}<span className="text-red-600"></span>
             </label>
             <input 
@@ -112,7 +144,7 @@ export default function RSVP(){
               name="email" 
               type="email" 
               required 
-              className="mt-1 w-full rounded-xl border border-brand-200 p-3 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
+              className="mt-1 w-full rounded-xl border border-brand-200 p-2.5 sm:p-3 text-sm sm:text-base focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
               placeholder={z.form.placeholders.email}
               aria-required="true"
               onBlur={handleBlur}
@@ -124,7 +156,7 @@ export default function RSVP(){
           </div>
 
           <div>
-            <label htmlFor="rsvp-phone" className="block text-sm font-semibold text-ink">
+            <label htmlFor="rsvp-phone" className="block text-xs sm:text-sm font-semibold text-ink">
               {z.form.labels.phone}<span className="text-red-600">*</span>
             </label>
             <input 
@@ -132,7 +164,7 @@ export default function RSVP(){
               name="phone" 
               type="tel" 
               required 
-              className="mt-1 w-full rounded-xl border border-brand-200 p-3 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
+              className="mt-1 w-full rounded-xl border border-brand-200 p-2.5 sm:p-3 text-sm sm:text-base focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
               placeholder={z.form.placeholders.phone}
               aria-required="true"
               onBlur={handleBlur}
@@ -144,7 +176,7 @@ export default function RSVP(){
           </div>
 
           <div>
-            <label htmlFor="rsvp-party-size" className="block text-sm font-semibold text-ink">
+            <label htmlFor="rsvp-party-size" className="block text-xs sm:text-sm font-semibold text-ink">
               {z.form.labels.partySize}<span className="text-red-600"></span>
             </label>
             <input 
@@ -153,7 +185,7 @@ export default function RSVP(){
               type="number" 
               min="1" 
               required
-              className="mt-1 w-full rounded-xl border border-brand-200 p-3 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
+              className="mt-1 w-full rounded-xl border border-brand-200 p-2.5 sm:p-3 text-sm sm:text-base focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition" 
               defaultValue={1}
               aria-required="true"
               onBlur={handleBlur}
@@ -164,52 +196,48 @@ export default function RSVP(){
             )}
           </div>
 
-          <div className="mt-8 pt-4 border-t border-brand-200">
-            <button type="submit" className="btn w-full">
+          <div className="mt-6 sm:mt-8 pt-3 sm:pt-4 border-t border-brand-200">
+            <button type="submit" className="btn w-full text-sm sm:text-base">
               {z.form.submitButton}
             </button>
           </div>
         </form>
 
-        <aside className="space-y-4">
+        <aside className="space-y-3 sm:space-y-4">
           <div className="card-base border-2 border-brand-300">
-            <h3 className="text-xl font-extrabold text-ink mb-4">{z.zelleBlock.heading}</h3>
-            <div className="bg-brand-50 border border-brand-200 rounded-lg p-5">
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-brand-700 font-medium">Name:</span>
-                  <span className="text-sm font-semibold text-ink">{z.zelleBlock.name}</span>
+            <h3 className="text-lg sm:text-xl font-extrabold text-ink mb-3 sm:mb-4">{z.zelleBlock.heading}</h3>
+            <div className="bg-brand-50 border border-brand-200 rounded-lg p-3 sm:p-5">
+              <div className="space-y-2.5 sm:space-y-3">
+                <div className="flex justify-between items-center gap-2 flex-wrap">
+                  <span className="text-xs sm:text-sm text-brand-700 font-medium">Handle:</span>
+                  <span className="text-xs sm:text-sm font-semibold text-ink break-words text-right">{z.zelleBlock.handle}</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-brand-700 font-medium">Handle:</span>
-                  <span className="text-sm font-semibold text-ink">{z.zelleBlock.handle}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-brand-700 font-medium">Memo:</span>
-                  <span className="text-sm font-semibold text-ink">{z.zelleBlock.memo}</span>
+                <div className="flex justify-between items-center gap-2 flex-wrap">
+                  <span className="text-xs sm:text-sm text-brand-700 font-medium">Memo:</span>
+                  <span className="text-xs sm:text-sm font-semibold text-ink break-words text-right">{z.zelleBlock.memo}</span>
                 </div>
               </div>
             </div>
-            <div className="mt-4 space-y-2">
-              <p className="text-xs text-brand-600/80 italic">{z.zelleBlock.refundPolicy}</p>
-              <p className="text-xs text-brand-600 font-medium">{z.zelleBlock.confirmationNote}</p>
+            <div className="mt-3 sm:mt-4 space-y-1.5 sm:space-y-2">
+              <p className="text-[10px] sm:text-xs text-brand-600/80 italic leading-relaxed">{z.zelleBlock.refundPolicy}</p>
+              <p className="text-[10px] sm:text-xs text-brand-600 font-medium leading-relaxed">{z.zelleBlock.confirmationNote}</p>
             </div>
           </div>
 
           <div className="card-base">
-            <h3 className="text-xl font-extrabold text-ink">{z.questions.heading}</h3>
-            <p className="mt-1 text-sm">{z.questions.text}</p>
+            <h3 className="text-lg sm:text-xl font-extrabold text-ink">{z.questions.heading}</h3>
+            <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm leading-relaxed">{z.questions.text}</p>
           </div>
         </aside>
       </div>
 
-      <div className="card-base max-w-2xl mx-auto mt-8">
-        <h2 className="text-2xl font-extrabold text-ink mb-4">{z.whatHappensAfter.heading}</h2>
-        <ul className="space-y-2">
+      <div className="card-base max-w-2xl mx-auto mt-6 sm:mt-8">
+        <h2 className="text-xl sm:text-2xl font-extrabold text-ink mb-3 sm:mb-4">{z.whatHappensAfter.heading}</h2>
+        <ul className="space-y-2 sm:space-y-2.5">
           {z.whatHappensAfter.items.map((item, i) => (
             <li key={i} className="flex items-start gap-2">
-              <span className="text-brand-600 mt-1">•</span>
-              <span className="text-ink"><strong>{item.title}</strong> — {item.description}</span>
+              <span className="text-brand-600 mt-0.5 sm:mt-1 flex-shrink-0">•</span>
+              <span className="text-ink text-sm sm:text-base leading-relaxed break-words"><strong>{item.title}</strong> — {item.description}</span>
             </li>
           ))}
         </ul>

@@ -4,18 +4,23 @@ import GlassPanel from "../components/layout/GlassPanel";
 
 export default function Faq(){
   return (
-    <section className="bg-transparent py-14">
-      <div className="max-w-4xl mx-auto px-4">
-        <GlassPanel className="p-8">
-          <div className="text-center mb-10">
-            <h2 className="heading-display text-4xl text-ink">{site.faq.heading}</h2>
-            <div className="rule-ornate mt-6 mx-auto" />
+    <section className="bg-transparent py-8 sm:py-12 md:py-14">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <GlassPanel className="p-4 sm:p-6 md:p-8">
+          <div className="text-center mb-6 sm:mb-8 md:mb-10">
+            <h2 className="heading-display text-2xl sm:text-3xl md:text-4xl text-ink">{site.faq.heading}</h2>
+            <div className="rule-ornate mt-4 sm:mt-6 mx-auto" />
           </div>
-          <div className="mt-6 grid gap-4">
+          <div className="mt-4 sm:mt-6 grid gap-3 sm:gap-4">
         {site.faq.questions.map((f,i)=> (
-          <details key={i} className="card-base">
-            <summary className="font-extrabold cursor-pointer">{f.question}</summary>
-            <p className="mt-2 opacity-80">{f.answer}</p>
+          <details key={i} className="card-base group">
+            <summary className="font-extrabold cursor-pointer text-sm sm:text-base leading-snug break-words list-none [&::-webkit-details-marker]:hidden">
+              <span className="flex items-start gap-2">
+                <span className="flex-shrink-0 text-primary group-open:rotate-90 transition-transform">▶</span>
+                <span className="flex-1">{f.question}</span>
+              </span>
+            </summary>
+            <p className="mt-3 sm:mt-4 ml-6 opacity-80 text-sm sm:text-base leading-relaxed">{f.answer}</p>
           </details>
         ))}
           </div>

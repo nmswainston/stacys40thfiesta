@@ -295,7 +295,6 @@ const site = {
       { label: "RSVP", path: "/rsvp" },
       { label: "Stay", path: "/stay" },
       { label: "Memories", path: "/memories" },
-      { label: "Carpool", path: "/carpool" },
       { label: "Travel", path: "/travel" }
     ]
   }

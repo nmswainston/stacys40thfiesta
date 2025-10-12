@@ -8,8 +8,6 @@ import RSVP from "../routes/RSVP";
 import Memories from "../routes/Memories";
 import Travel from "../routes/Travel";
 import Slideshow from "../routes/Slideshow";
-import Carpool from "../routes/Carpool";
-import CarpoolThanks from "../routes/CarpoolThanks";
 import NotFound from "../routes/NotFound";
 
 const router = createBrowserRouter(
@@ -24,8 +22,6 @@ const router = createBrowserRouter(
         { path: "/memories", element: <Memories /> },
         { path: "/travel", element: <Travel /> },
         { path: "/slideshow", element: <Slideshow /> },
-        { path: "/carpool", element: <Carpool /> },
-        { path: "/carpool/thanks", element: <CarpoolThanks /> },
         { path: "*", element: <NotFound /> },
       ]
     }

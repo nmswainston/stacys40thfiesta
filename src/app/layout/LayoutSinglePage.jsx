@@ -245,9 +245,9 @@ export default function LayoutSinglePage() {
       <main id="main-content" className="text-ink pt-20" role="main">
         <Outlet />
       </main>
-      <footer className="py-8 sm:py-10 text-center text-sm opacity-70 text-ink border-t border-brand-200 mt-12" role="contentinfo">
+      <footer className="py-6 sm:py-8 md:py-10 text-center text-sm opacity-70 text-ink border-t border-brand-200 mt-8 sm:mt-12" role="contentinfo">
         <div className="max-w-6xl mx-auto px-4">
-          <nav className="flex justify-center items-center gap-3 sm:gap-4 mb-4 text-xs sm:text-sm flex-wrap" aria-label="Footer navigation">
+          <nav className="flex justify-center items-center gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm flex-wrap" aria-label="Footer navigation">
             {isHomePage ? (
               scrollNavItems.slice(1).map((item) => (
                 <a

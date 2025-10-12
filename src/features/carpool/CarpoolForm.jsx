@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import site from "../../data/siteData";
 import NetlifyForm from "../../components/forms/NetlifyForm";
 import Input from "../../components/ui/Input";
@@ -9,7 +8,6 @@ import { postNetlifyForm } from "../../lib/netlify";
 import { fireConfetti } from "../../lib/confetti";
 
 export default function CarpoolForm() {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,9 +43,28 @@ export default function CarpoolForm() {
     try {
       await postNetlifyForm("carpool", e.target);
       fireConfetti();
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        role: "",
+        seats: "",
+        location: "",
+        notes: ""
+      });
+      
+      // Show success message
+      alert("Thanks for signing up! We've received your carpool info. We'll be in touch soon to coordinate rides!");
+      
+      // Scroll to top of carpool section
       setTimeout(() => {
-        navigate("/carpool/thanks");
-      }, 400);
+        const carpoolSection = document.getElementById("carpool");
+        if (carpoolSection) {
+          carpoolSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     } catch (error) {
       console.error("Form submission error:", error);
       setErrors({ submit: "Something went wrong. Please try again." });
@@ -93,8 +110,8 @@ export default function CarpoolForm() {
       />
 
       <div className="space-y-2">
-        <label className="block text-sm font-semibold text-ink">{c.labels.role}</label>
-        <div className="flex gap-4">
+        <label className="block text-xs sm:text-sm font-semibold text-ink">{c.labels.role}</label>
+        <div className="flex gap-3 sm:gap-4 flex-wrap">
           <label className="flex items-center gap-2 cursor-pointer">
             <input
               type="radio"
@@ -102,9 +119,9 @@ export default function CarpoolForm() {
               value="driver"
               checked={formData.role === "driver"}
               onChange={handleChange}
-              className="w-4 h-4 text-brand-600 border-brand-300 focus:ring-accent"
+              className="w-4 h-4 text-brand-600 border-brand-300 focus:ring-accent flex-shrink-0"
             />
-            <span className="font-spanish-body">{c.roleOptions.driver}</span>
+            <span className="font-spanish-body text-sm sm:text-base">{c.roleOptions.driver}</span>
           </label>
           <label className="flex items-center gap-2 cursor-pointer">
             <input
@@ -113,9 +130,9 @@ export default function CarpoolForm() {
               value="rider"
               checked={formData.role === "rider"}
               onChange={handleChange}
-              className="w-4 h-4 text-brand-600 border-brand-300 focus:ring-accent"
+              className="w-4 h-4 text-brand-600 border-brand-300 focus:ring-accent flex-shrink-0"
             />
-            <span className="font-spanish-body">{c.roleOptions.rider}</span>
+            <span className="font-spanish-body text-sm sm:text-base">{c.roleOptions.rider}</span>
           </label>
         </div>
         {errors.role && <p className="text-xs text-red-600 mt-1">{errors.role}</p>}
@@ -145,22 +162,22 @@ export default function CarpoolForm() {
       />
 
       <div className="space-y-1">
-        <label className="block text-sm font-semibold text-ink">{c.labels.notes}</label>
+        <label className="block text-xs sm:text-sm font-semibold text-ink">{c.labels.notes}</label>
         <textarea
           name="notes"
           value={formData.notes}
           onChange={handleChange}
-          className="w-full px-4 py-3 border-2 border-brand-200 rounded-xl focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-accent/30 transition-colors font-spanish-body bg-cream-50"
+          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border-2 border-brand-200 rounded-xl focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-accent/30 transition-colors font-spanish-body bg-cream-50 text-sm sm:text-base leading-relaxed"
           rows="3"
           placeholder={c.placeholders.notes}
         />
       </div>
 
       {errors.submit && (
-        <p className="text-sm text-red-600 text-center">{errors.submit}</p>
+        <p className="text-xs sm:text-sm text-red-600 text-center leading-relaxed">{errors.submit}</p>
       )}
 
-      <Button type="submit" disabled={isSubmitting} className="w-full">
+      <Button type="submit" disabled={isSubmitting} className="w-full text-sm sm:text-base">
         {isSubmitting ? c.submittingButton : c.submitButton}
       </Button>
     </NetlifyForm>

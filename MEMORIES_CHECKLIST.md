@@ -38,20 +38,20 @@
 - [x] **Trigger a new deployment** (important!)
 
 ### 4. Test Everything
-- [ ] Visit `/memories` on your live site
-- [ ] Submit a test memory with all fields
-- [ ] See confetti animation ✨
-- [ ] Check Netlify Forms dashboard for submission
-- [ ] Refresh page - see memory appear in feed
-- [ ] Test photo upload
-- [ ] Test without photo
-- [ ] Test required field validation
+- [x] Visit `/memories` on your live site
+- [x] Submit a test memory with all fields
+- [x] See confetti animation ✨
+- [x] Check Netlify Forms dashboard for submission
+- [x] Refresh page - see memory appear in feed
+- [x] Test photo upload
+- [x] Test without photo
+- [x] Test required field validation
 
 ### 5. Optional: Local Development
-- [ ] Create `.env` file with credentials
-- [ ] Run `npm run dev:netlify`
-- [ ] Test form submission locally
-- [ ] Test API endpoints locally
+- [x] Create `.env` file with credentials
+- [x] Run `npm run dev:netlify`
+- [x] Test form submission locally
+- [x] Test API endpoints locally
 
 ## Troubleshooting Quick Fixes
 

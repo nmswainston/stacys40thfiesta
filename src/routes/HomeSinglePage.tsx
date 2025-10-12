@@ -106,35 +106,35 @@ export default function HomeSinglePage() {
               {/* Cream fade overlay for readability */}
               <div className="absolute inset-x-0 -top-8 h-48 pointer-events-none bg-cream-fade" aria-hidden="true" />
               
-              <div className="relative px-6 sm:px-10 py-10 sm:py-12 text-center -mt-[100px]">
+              <div className="relative px-4 sm:px-6 md:px-10 py-8 sm:py-10 md:py-12 text-center -mt-[100px]">
                 {/* Festive Bienvenidos Header */}
                 <div className="mb-3 sm:mb-4">
-                  <div className="text-5xl sm:text-6xl md:text-7xl tracking-wide font-display text-accent">
+                  <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide font-display text-accent leading-tight">
                     {site.hero.oleText}
                   </div>
                 </div>
 
                 {/* Hero Title with Stylized 40 */}
                 <div className="mt-3 sm:mt-4">
-                  <h1 className="text-4xl sm:text-6xl md:text-7xl font-display text-primary leading-tight tracking-wide">
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display text-primary leading-tight tracking-wide px-2">
                     {site.hero.mainTitle}
                   </h1>
                 </div>
 
               {/* Celebrate Stacy Subline with Stars */}
-              <div className="mt-2 sm:mt-3 flex items-center justify-center gap-2 text-brand-700/80">
+              <div className="mt-3 sm:mt-4 flex items-center justify-center gap-2 text-brand-700/80 flex-wrap px-2">
                 <svg
-                  className="w-5 h-5 text-accent opacity-80"
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-accent opacity-80 flex-shrink-0"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
-                <span className="text-lg sm:text-xl font-bold text-accent">
+                <span className="text-base sm:text-lg md:text-xl font-bold text-accent">
                   {site.hero.celebrationText}
                 </span>
                 <svg
-                  className="w-5 h-5 text-accent opacity-80"
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-accent opacity-80 flex-shrink-0"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -142,36 +142,36 @@ export default function HomeSinglePage() {
                 </svg>
               </div>
 
-                <p className="mt-2 sm:mt-3 text-text-dark/80 max-w-2xl mx-auto px-2 font-body tracking-normal">
+                <p className="mt-3 sm:mt-4 text-sm sm:text-base text-text-dark/80 max-w-2xl mx-auto px-4 font-body tracking-normal leading-relaxed">
                   {site.hero.subtitle}
                 </p>
 
                 {/* Countdown */}
-                <div className="mt-6 sm:mt-8 mb-4 sm:mb-6" aria-live="polite" aria-label="Countdown to event">
-                  <div className="grid grid-cols-4 max-w-xl mx-auto divide-x divide-secondary/30">
-                    <div className="text-center px-2">
-                      <div className="text-3xl sm:text-4xl font-bold text-accent font-accent">
+                <div className="mt-6 sm:mt-8 mb-4 sm:mb-6 px-2" aria-live="polite" aria-label="Countdown to event">
+                  <div className="grid grid-cols-4 gap-2 sm:gap-0 max-w-xl mx-auto sm:divide-x divide-secondary/30">
+                    <div className="text-center px-1 sm:px-2">
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent font-accent">
                         {timeLeft.days}
                       </div>
-                      <div className="text-xs sm:text-sm text-text-dark/80 uppercase tracking-wide mt-1 font-body">days</div>
+                      <div className="text-[10px] sm:text-xs md:text-sm text-text-dark/80 uppercase tracking-wide mt-0.5 sm:mt-1 font-body">days</div>
                     </div>
-                    <div className="text-center px-2">
-                      <div className="text-3xl sm:text-4xl font-bold text-accent font-accent">
+                    <div className="text-center px-1 sm:px-2">
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent font-accent">
                         {timeLeft.hours}
                       </div>
-                      <div className="text-xs sm:text-sm text-text-dark/80 uppercase tracking-wide mt-1 font-body">hours</div>
+                      <div className="text-[10px] sm:text-xs md:text-sm text-text-dark/80 uppercase tracking-wide mt-0.5 sm:mt-1 font-body">hours</div>
                     </div>
-                    <div className="text-center px-2">
-                      <div className="text-3xl sm:text-4xl font-bold text-accent font-accent">
+                    <div className="text-center px-1 sm:px-2">
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent font-accent">
                         {timeLeft.minutes}
                       </div>
-                      <div className="text-xs sm:text-sm text-text-dark/80 uppercase tracking-wide mt-1 font-body">mins</div>
+                      <div className="text-[10px] sm:text-xs md:text-sm text-text-dark/80 uppercase tracking-wide mt-0.5 sm:mt-1 font-body">mins</div>
                     </div>
-                    <div className="text-center px-2">
-                      <div className="text-3xl sm:text-4xl font-bold text-accent font-accent">
+                    <div className="text-center px-1 sm:px-2">
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent font-accent">
                         {timeLeft.seconds}
                       </div>
-                      <div className="text-xs sm:text-sm text-text-dark/80 uppercase tracking-wide mt-1 font-body">secs</div>
+                      <div className="text-[10px] sm:text-xs md:text-sm text-text-dark/80 uppercase tracking-wide mt-0.5 sm:mt-1 font-body">secs</div>
                     </div>
                   </div>
                 </div>
@@ -179,18 +179,18 @@ export default function HomeSinglePage() {
                 {/* Ornament Divider */}
                 <div className="rule-ornate mt-6 mb-8 mx-auto" aria-hidden="true" />
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 px-4">
                   <img
                     src="/assets/vaquero.svg"
                     alt="Vaquero"
-                    className="w-10 h-10 sm:w-12 sm:h-12 opacity-90"
+                    className="w-10 h-10 sm:w-12 sm:h-12 opacity-90 flex-shrink-0"
                     width="48"
                     height="48"
                     loading="lazy"
                   />
-                  <div className="text-sm sm:text-base font-medium text-text-dark/80 font-body tracking-normal text-center">
+                  <div className="text-sm sm:text-base font-medium text-text-dark/80 font-body tracking-normal text-center leading-relaxed">
                     <div className="block">{site.hero.date}</div>
-                    <div className="block">{site.hero.location}</div>
+                    <div className="block mt-1">{site.hero.location}</div>
                   </div>
                 </div>
 
@@ -219,29 +219,29 @@ export default function HomeSinglePage() {
               {/* Cream fade overlay for readability */}
               <div className="absolute inset-x-0 -top-8 h-48 pointer-events-none bg-cream-fade" aria-hidden="true" />
               
-              <div className="relative text-center mb-10">
-                <h2 className="font-display text-3xl md:text-4xl text-primary tracking-wide">{site.sections.agenda.heading}</h2>
-                <div className="rule-ornate mt-6 mx-auto" />
-                <p className="mt-6 text-text-dark/80 font-body tracking-normal">
+              <div className="relative text-center mb-8 sm:mb-10 px-4">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-primary tracking-wide">{site.sections.agenda.heading}</h2>
+                <div className="rule-ornate mt-4 sm:mt-6 mx-auto" />
+                <p className="mt-4 sm:mt-6 text-sm sm:text-base text-text-dark/80 font-body tracking-normal leading-relaxed max-w-2xl mx-auto">
                   {site.sections.agenda.subheading}
                 </p>
               </div>
-              <div className="relative grid md:grid-cols-3 gap-6 mt-8">
+              <div className="relative grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-8">
                 {site.agenda.map((s, i) => (
                   <article key={i} className="card-base focus-within:ring-2 focus-within:ring-primary/50 flex flex-col h-full">
                     {/* Header with icon and day */}
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="text-3xl flex-shrink-0" role="img" aria-label={`${s.title} icon`}>
+                    <div className="flex items-start sm:items-center gap-3 mb-4">
+                      <div className="text-2xl sm:text-3xl flex-shrink-0" role="img" aria-label={`${s.title} icon`}>
                         {s.icon}
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-extrabold text-primary font-display tracking-wide leading-tight whitespace-pre-line">{s.day}</h3>
-                        <div className="font-semibold text-text-dark font-body tracking-normal leading-tight">{s.title}</div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg sm:text-xl font-extrabold text-primary font-display tracking-wide leading-tight whitespace-pre-line break-words">{s.day}</h3>
+                        <div className="font-semibold text-sm sm:text-base text-text-dark font-body tracking-normal leading-tight mt-1">{s.title}</div>
                       </div>
                     </div>
                     
                     {/* Description */}
-                    <div className="text-sm font-body tracking-normal text-text-dark/80 mb-4 flex-1">
+                    <div className="text-sm font-body tracking-normal text-text-dark/80 mb-4 flex-1 leading-relaxed">
                       {s.details}
                     </div>
                     
@@ -261,14 +261,14 @@ export default function HomeSinglePage() {
                     
                     {/* Time and cost footer */}
                     <div className="mt-auto pt-3 border-t border-secondary/20">
-                      <div className="flex items-center justify-between text-sm">
-                        <div className="flex items-center gap-2 text-text-dark/80">
-                          <span className="text-accent">🕐</span>
+                      <div className="flex items-center justify-between text-xs sm:text-sm flex-wrap gap-2">
+                        <div className="flex items-center gap-1.5 sm:gap-2 text-text-dark/80">
+                          <span className="text-accent text-sm">🕐</span>
                           <span className="font-body tracking-normal">{s.time}</span>
                         </div>
                         {s.estimatedCost && (
-                          <div className="flex items-center gap-2 text-text-dark/70">
-                            <span className="text-accent">💰</span>
+                          <div className="flex items-center gap-1.5 sm:gap-2 text-text-dark/70">
+                            <span className="text-accent text-sm">💰</span>
                             <span className="font-body tracking-normal font-medium">{s.estimatedCost}</span>
                           </div>
                         )}
@@ -292,10 +292,10 @@ export default function HomeSinglePage() {
               {/* Cream fade overlay for readability */}
               <div className="absolute inset-x-0 -top-8 h-48 pointer-events-none bg-cream-fade" aria-hidden="true" />
               
-              <div className="relative text-center mb-8">
-                <h2 className="font-display text-3xl md:text-4xl text-primary tracking-wide">{site.sections.rsvp.heading}</h2>
-                <div className="rule-ornate mt-6 mx-auto" />
-                <p className="mt-6 text-text-dark/80 font-body tracking-normal">
+              <div className="relative text-center mb-8 px-4">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-primary tracking-wide">{site.sections.rsvp.heading}</h2>
+                <div className="rule-ornate mt-4 sm:mt-6 mx-auto" />
+                <p className="mt-4 sm:mt-6 text-sm sm:text-base text-text-dark/80 font-body tracking-normal leading-relaxed max-w-xl mx-auto">
                   {site.sections.rsvp.description}
                 </p>
               </div>
@@ -322,17 +322,17 @@ export default function HomeSinglePage() {
               {/* Cream fade overlay for readability */}
               <div className="absolute inset-x-0 -top-8 h-48 pointer-events-none bg-cream-fade" aria-hidden="true" />
               
-              <div className="relative text-center mb-8">
-                <h2 className="font-display text-3xl md:text-4xl text-primary tracking-wide">{site.sections.stay.heading}</h2>
-                <div className="rule-ornate mt-6 mx-auto" />
-                <p className="mt-6 text-text-dark/80 font-body tracking-normal max-w-2xl mx-auto">
+              <div className="relative text-center mb-8 px-4">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-primary tracking-wide">{site.sections.stay.heading}</h2>
+                <div className="rule-ornate mt-4 sm:mt-6 mx-auto" />
+                <p className="mt-4 sm:mt-6 text-sm sm:text-base text-text-dark/80 font-body tracking-normal leading-relaxed max-w-2xl mx-auto">
                   {site.sections.stay.description}
                 </p>
               </div>
-              <div className="relative grid md:grid-cols-4 gap-4 mt-8">
+              <div className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 mt-8">
                 {site.stay.amenities.map((amenity, i) => (
                   <div key={i} className="frost-layer text-center">
-                    <p className="text-sm font-semibold font-body tracking-normal">{amenity}</p>
+                    <p className="text-xs sm:text-sm font-semibold font-body tracking-normal leading-relaxed break-words">{amenity}</p>
                   </div>
                 ))}
               </div>
@@ -359,10 +359,10 @@ export default function HomeSinglePage() {
               {/* Cream fade overlay for readability */}
               <div className="absolute inset-x-0 -top-8 h-48 pointer-events-none bg-cream-fade" aria-hidden="true" />
               
-              <div className="relative text-center mb-8">
-                <h2 className="font-display text-3xl md:text-4xl text-primary tracking-wide">{site.sections.memories.heading}</h2>
-                <div className="rule-ornate mt-6 mx-auto" />
-                <p className="mt-6 text-text-dark/80 font-body tracking-normal">
+              <div className="relative text-center mb-8 px-4">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-primary tracking-wide">{site.sections.memories.heading}</h2>
+                <div className="rule-ornate mt-4 sm:mt-6 mx-auto" />
+                <p className="mt-4 sm:mt-6 text-sm sm:text-base text-text-dark/80 font-body tracking-normal leading-relaxed max-w-2xl mx-auto">
                   {site.sections.memories.description}
                 </p>
               </div>
@@ -389,41 +389,41 @@ export default function HomeSinglePage() {
               {/* Cream fade overlay for readability */}
               <div className="absolute inset-x-0 -top-8 h-48 pointer-events-none bg-cream-fade" aria-hidden="true" />
               
-              <div className="relative text-center mb-10">
-                <h2 className="font-display text-3xl md:text-4xl text-primary tracking-wide">{site.sections.carpool.heading}</h2>
-                <div className="rule-ornate mt-6 mx-auto" />
-                <p className="mt-6 text-text-dark/80 font-body tracking-normal max-w-3xl mx-auto">
+              <div className="relative text-center mb-8 sm:mb-10 px-4">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-primary tracking-wide">{site.sections.carpool.heading}</h2>
+                <div className="rule-ornate mt-4 sm:mt-6 mx-auto" />
+                <p className="mt-4 sm:mt-6 text-sm sm:text-base text-text-dark/80 font-body tracking-normal leading-relaxed max-w-3xl mx-auto">
                   {site.sections.carpool.description}
                 </p>
               </div>
 
-              <div className="relative grid lg:grid-cols-2 gap-8 mt-8">
+              <div className="relative grid lg:grid-cols-2 gap-6 sm:gap-8 mt-8">
                 {/* Left Side: Sign Up Form */}
-                <div className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                     <div className="frost-layer">
-                      <h3 className="text-lg font-display font-bold text-primary flex items-center gap-2 tracking-wide">
-                        <span role="img" aria-label="car">{site.sections.carpool.offeringCard.icon}</span>
-                        <span>{site.sections.carpool.offeringCard.title}</span>
+                      <h3 className="text-base sm:text-lg font-display font-bold text-primary flex items-start sm:items-center gap-2 tracking-wide">
+                        <span role="img" aria-label="car" className="text-lg sm:text-xl flex-shrink-0">{site.sections.carpool.offeringCard.icon}</span>
+                        <span className="leading-tight">{site.sections.carpool.offeringCard.title}</span>
                       </h3>
-                      <p className="text-sm text-text-dark/70 mt-2 font-body tracking-normal">
+                      <p className="text-xs sm:text-sm text-text-dark/70 mt-2 font-body tracking-normal leading-relaxed">
                         {site.sections.carpool.offeringCard.description}
                       </p>
                     </div>
 
                     <div className="frost-layer">
-                      <h3 className="text-lg font-display font-bold text-primary flex items-center gap-2 tracking-wide">
-                        <span role="img" aria-label="raising hand">{site.sections.carpool.needingCard.icon}</span>
-                        <span>{site.sections.carpool.needingCard.title}</span>
+                      <h3 className="text-base sm:text-lg font-display font-bold text-primary flex items-start sm:items-center gap-2 tracking-wide">
+                        <span role="img" aria-label="raising hand" className="text-lg sm:text-xl flex-shrink-0">{site.sections.carpool.needingCard.icon}</span>
+                        <span className="leading-tight">{site.sections.carpool.needingCard.title}</span>
                       </h3>
-                      <p className="text-sm text-text-dark/70 mt-2 font-body tracking-normal">
+                      <p className="text-xs sm:text-sm text-text-dark/70 mt-2 font-body tracking-normal leading-relaxed">
                         {site.sections.carpool.needingCard.description}
                       </p>
                     </div>
                   </div>
 
                   <div className="card-base">
-                    <h3 className="text-2xl font-display font-bold mb-6 text-primary border-b-2 border-secondary/30 pb-3 tracking-wide">{site.sections.carpool.formHeading}</h3>
+                    <h3 className="text-xl sm:text-2xl font-display font-bold mb-4 sm:mb-6 text-primary border-b-2 border-secondary/30 pb-3 tracking-wide">{site.sections.carpool.formHeading}</h3>
                     <CarpoolForm />
                   </div>
                 </div>
@@ -448,15 +448,15 @@ export default function HomeSinglePage() {
               {/* Cream fade overlay for readability */}
               <div className="absolute inset-x-0 -top-8 h-48 pointer-events-none bg-cream-fade" aria-hidden="true" />
               
-              <div className="relative text-center mb-8">
-                <h2 className="font-display text-3xl md:text-4xl text-primary tracking-wide">{site.travel.heading}</h2>
-                <div className="rule-ornate mt-6 mx-auto" />
+              <div className="relative text-center mb-8 px-4">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-primary tracking-wide">{site.travel.heading}</h2>
+                <div className="rule-ornate mt-4 sm:mt-6 mx-auto" />
               </div>
               
-              <div className="relative grid gap-4 mt-8">
+              <div className="relative grid gap-3 sm:gap-4 mt-8">
                 {site.travel.tips.map((tip, i) => (
                   <div key={i} className="frost-layer text-left">
-                    <p className="text-sm font-body tracking-normal text-text-dark/80">{tip}</p>
+                    <p className="text-xs sm:text-sm font-body tracking-normal text-text-dark/80 leading-relaxed">{tip}</p>
                   </div>
                 ))}
               </div>

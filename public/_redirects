@@ -1,2 +1,5 @@
+# Redirect old carpool page to home page carpool section
+/carpool  /#carpool  301
+
 /*  /index.html  200
 

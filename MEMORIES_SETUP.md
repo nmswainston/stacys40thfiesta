@@ -16,15 +16,26 @@ The memories section allows guests to share their favorite Stacy memories with o
 
 ## Setup Instructions
 
-### 1. Deploy Your Site
+### 1. Ensure Hidden Forms Are Present (CRITICAL!)
+
+⚠️ **For React/SPA apps**: Netlify Forms detection requires a static HTML form in your `index.html`. 
+
+✅ **Already Done!** Your `index.html` now includes hidden forms for:
+- `memories` - Memory wall submissions
+- `rsvp` - RSVP form
+- `carpool` - Carpool coordination
+
+These hidden forms allow Netlify to detect your forms at build time, even though the actual forms are rendered by React.
+
+### 2. Deploy Your Site
 ```bash
 npm run build
 # Push to GitHub and deploy via Netlify
 ```
 
-Once deployed, Netlify will automatically detect the form with `data-netlify="true"` attribute.
+Once deployed, Netlify will automatically detect the hidden forms in your `index.html`.
 
-### 2. Get Your Netlify Personal Access Token
+### 3. Get Your Netlify Personal Access Token
 
 1. Visit: https://app.netlify.com/user/applications
 2. Scroll to "Personal access tokens"
@@ -32,7 +43,7 @@ Once deployed, Netlify will automatically detect the form with `data-netlify="tr
 4. Name it: "Stacy Party Site API"
 5. Copy the token (you won't see it again!)
 
-### 3. Get Your Form ID
+### 4. Get Your Form ID
 
 1. Go to your Netlify dashboard
 2. Select your site
@@ -41,20 +52,20 @@ Once deployed, Netlify will automatically detect the form with `data-netlify="tr
 5. The Form ID is in the URL: `https://app.netlify.com/sites/YOUR-SITE/forms/FORM-ID-HERE`
 6. Copy the long alphanumeric Form ID
 
-### 4. Add Environment Variables to Netlify
+### 5. Add Environment Variables to Netlify
 
 1. In your Netlify site dashboard, go to: **Site Settings → Environment Variables**
 2. Add the following variables:
 
    | Variable Name | Value |
    |--------------|-------|
-   | `NETLIFY_TOKEN` | Your personal access token from step 2 |
-   | `NETLIFY_FORM_ID_MEMORIES` | Your form ID from step 3 |
+   | `NETLIFY_TOKEN` | Your personal access token from step 3 |
+   | `NETLIFY_FORM_ID_MEMORIES` | Your form ID from step 4 |
 
 3. Click "Save"
 4. **Important:** Redeploy your site for the environment variables to take effect
 
-### 5. Test the Flow
+### 6. Test the Flow
 
 1. **Submit a test memory:**
    - Go to your site's `/memories` route
@@ -136,10 +147,16 @@ Memories are sorted newest first.
 - Go to Site Settings → Environment Variables and verify they're set
 - Trigger a new deployment
 
+### Form not detected by Netlify
+- ✅ **Solution**: Hidden form must exist in `index.html` (already added!)
+- Verify the hidden form has `name="memories"` and `netlify` attribute
+- Redeploy after adding the hidden form
+
 ### Form submissions not appearing
 - Check Netlify Forms dashboard to see if submissions are being captured
-- Verify the form name matches: `name="memories"`
-- Ensure `data-netlify="true"` is on the form element
+- Verify the form name matches exactly: `name="memories"`
+- Ensure `data-netlify="true"` is on the React form element
+- Confirm hidden form in `index.html` has matching field names
 
 ### Photos not uploading
 - Form must have `encType="multipart/form-data"`

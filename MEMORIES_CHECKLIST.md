@@ -6,22 +6,23 @@
 - [x] Serverless function (`memories-list.ts`) ready
 - [x] Netlify redirects configured
 - [x] TypeScript types defined
+- [x] **Hidden forms added to `index.html`** ⚠️ (CRITICAL for React apps!)
 
 ## Deployment Steps
 
 ### 1. Deploy to Netlify
-- [ ] Push code to GitHub
-- [ ] Ensure Netlify is connected to your repo
-- [ ] Deploy completes successfully
-- [ ] Note your site URL
+- [x] Push code to GitHub
+- [x] Ensure Netlify is connected to your repo
+- [x] Deploy completes successfully
+- [x] Note your site URL
 
 ### 2. Get API Credentials
 
 #### Get Netlify Token
-- [ ] Visit: https://app.netlify.com/user/applications
-- [ ] Create new personal access token
-- [ ] Name it: "Stacy Party Site API"
-- [ ] Copy and save the token securely
+- [x] Visit: https://app.netlify.com/user/applications
+- [x] Create new personal access token
+- [x] Name it: "Stacy Party Site API"
+- [x] Copy and save the token securely
 
 #### Get Form ID
 - [ ] Go to Netlify Dashboard → Your Site → Forms
@@ -59,9 +60,14 @@
 - Verify function URL: `/.netlify/functions/memories-list`
 - Check Netlify function logs
 
+**Form not detected by Netlify?**
+- ✅ Hidden form already added to `index.html`
+- Redeploy after making changes
+- Check Netlify build logs for form detection confirmation
+
 **Form not submitting?**
-- Ensure `data-netlify="true"` is on form
-- Check that form name is exactly "memories"
+- Ensure `data-netlify="true"` is on React form
+- Check that form name is exactly "memories" (matches hidden form)
 - Look for errors in Netlify Forms dashboard
 
 **Missing environment variables error?**

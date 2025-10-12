@@ -41,6 +41,38 @@
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- Hidden forms for Netlify Forms detection (must be in static HTML) -->
+    
+    <!-- Memories Form -->
+    <form name="memories" netlify netlify-honeypot="website" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+      <input type="file" name="photo" />
+      <input type="text" name="website" />
+    </form>
+    
+    <!-- RSVP Form -->
+    <form name="rsvp" netlify netlify-honeypot="_catch" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="number" name="partySize" />
+      <input type="text" name="_catch" />
+    </form>
+    
+    <!-- Carpool Form -->
+    <form name="carpool" netlify hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="role" />
+      <input type="number" name="seats" />
+      <input type="text" name="location" />
+      <textarea name="notes"></textarea>
+    </form>
+    
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

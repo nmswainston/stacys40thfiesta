@@ -12,6 +12,11 @@
   status = 200
 
 [[redirects]]
+  from = "/.netlify/functions/memories-list"
+  to = "/.netlify/functions/memories-list"
+  status = 200
+
+[[redirects]]
   from = "/.netlify/functions/carpool-list"
   to = "/.netlify/functions/carpool-list"
   status = 200

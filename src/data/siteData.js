@@ -91,9 +91,7 @@ const site = {
       heading: "Payment by Zelle",
       name: "Stacy",
       handle: "(Stacy's phone number)",
-      memo: "Stacy40 + <Your Name>",
-      copyButton: "Copy",
-      copiedButton: "✓ Copied!"
+      memo: "Stacy40 + <Your Name>"
     },
 
     questions: {
@@ -122,7 +120,7 @@ const site = {
     { 
       day: "Friday\nDay", 
       title: "Margs & Milestones", 
-      details: "Private chef taco bar+ margaritas",
+      details: "Private chef taco bar + margaritas",
       time: "All day",
       estimatedCost: "$40 - $60",
       icon: "🍹" 

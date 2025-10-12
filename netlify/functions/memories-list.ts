@@ -1,4 +1,4 @@
-import type { Memory } from '../../src/lib/memories/types';
+import type { Memory } from '../../src/features/memories/types';
 
 // Strip HTML tags from a string
 function stripHtml(text: string): string {

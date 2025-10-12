@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import type { Memory } from "../lib/memories/types";
+import type { Memory } from "@features/memories/types";
 
 export default function Slideshow() {
   const [memories, setMemories] = useState<Memory[]>([]);

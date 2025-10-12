@@ -20,7 +20,20 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "allowJs": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+
+    /* Path Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@features/*": ["./src/features/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@data/*": ["./src/data/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@app/*": ["./src/app/*"]
+    }
   },
   "include": ["src", "netlify"],
   "references": [{ "path": "./tsconfig.node.json" }]

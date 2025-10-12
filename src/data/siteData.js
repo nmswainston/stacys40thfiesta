@@ -1,25 +1,23 @@
 const site = {
   meta: {
-    date: "April 24–27, 2026",
+    date: "Thursday, April 16 - Sunday, April 19, 2026",
     locationCity: "Puerto Peñasco (Rocky Point), Sonora, Mexico"
   },
 
   hero: {
     oleText: "¡Ole!",
-    mainTitle: "Stacy's",
-    ageNumber: "40",
-    ageSuffix: "th",
-    celebrationText: "¡Celebremos a Stacy!",
-    subtitle: "Celebrating four fabulous decades with denim, diamonds, and desert sunsets",
+    mainTitle: "Stacy's Rodeo Retreat",
+    celebrationText: "Saddle Up for 40!",
+    subtitle: "Kick of your boots and make some memories worth yee-hawing about!",
     ctaButton: "Saddle Up!",
-    date: "April 24–27, 2026",
+    date: "Thursday, April 16 - Sunday, April 19, 2026",
     location: "Puerto Peñasco (Rocky Point), Sonora, Mexico"
   },
 
   sections: {
     agenda: {
       heading: "Agenda",
-      subheading: "Subject to party-girl improvisation. Check back for tweaks."
+      subheading: "Your guide to the weekend festivities."
     },
     rsvp: {
       heading: "RSVP",
@@ -130,23 +128,26 @@ const site = {
     { 
       day: "Friday Day", 
       title: "Margs and Milestones", 
-      details: "Chef brunch + margaritas fiesta.", 
-      time: "Late morning–afternoon", 
+      details: "Chef brunch + margaritas fiesta.",
+      time: "Late morning–afternoon",
+      estimatedCost: "$40 - $60",
       icon: "🍹" 
     },
     { 
       day: "Friday Night", 
       title: "Denim & Diamonds", 
-      details: "Dress code: denim w/ sparkle. Dinner @ Mare Blu + bar crawl.", 
+      details: "Dinner @ Mare Blu", 
       link: "https://www.marebluristorante.com/", 
-      time: "7:00 PM – late", 
+      time: "7:00 PM", 
       icon: "✨" 
     },
     { 
       day: "Saturday Night", 
       title: "Sunset Booze Cruise", 
-      details: "Golden hour on the water.", 
-      time: "5:30 PM – sunset", 
+      details: "Golden hour on the water.",
+      link: "https://www.rockypointsunsetcruise.com/"
+      time: "5:30 PM – sunset",
+      estimatedCost: "$30", 
       icon: "⛵" 
     },
   ],

@@ -105,7 +105,7 @@ export default function HomeSinglePage() {
               {/* Cream fade overlay for readability */}
               <div className="absolute inset-x-0 -top-8 h-48 pointer-events-none bg-cream-fade" aria-hidden="true" />
               
-              <div className="relative px-6 sm:px-10 py-10 sm:py-12 text-center">
+              <div className="relative px-6 sm:px-10 py-10 sm:py-12 text-center -mt-[100px]">
                 {/* Festive Bienvenidos Header */}
                 <div className="mb-3 sm:mb-4">
                   <div className="text-5xl sm:text-6xl md:text-7xl tracking-wide font-display text-accent">
@@ -191,10 +191,9 @@ export default function HomeSinglePage() {
                     height="48"
                     loading="lazy"
                   />
-                  <div className="text-sm sm:text-base font-medium text-text-dark/80 font-body tracking-normal">
-                    <span className="block sm:inline">{site.meta.date}</span>
-                    <span className="hidden sm:inline"> • </span>
-                    <span className="block sm:inline">{site.meta.locationCity}</span>
+                  <div className="text-sm sm:text-base font-medium text-text-dark/80 font-body tracking-normal text-center">
+                    <div className="block">{site.meta.date}</div>
+                    <div className="block">{site.meta.locationCity}</div>
                   </div>
                 </div>
 

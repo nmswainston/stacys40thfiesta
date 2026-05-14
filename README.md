@@ -1,57 +1,50 @@
 # Stacy's 40th Fiesta 🎉
 
-A party planning website for Stacy's 40th birthday celebration.
+A purpose-built party planning website for a 40th birthday celebration.
 
-## Overview
+## Problem
 
-A purpose-built event website for Stacy's 40th birthday party — featuring event details, RSVP, and all the fiesta info guests need. Built with TypeScript and Tailwind CSS, deployed to Netlify with serverless functions for RSVP handling.
+Planning a milestone birthday party means coordinating RSVPs, sharing event details, and keeping guests informed — all without a central place to do it easily.
+
+## Solution
+
+A fun, purpose-built event website with all the party details in one place and a serverless RSVP form so guests could confirm attendance directly from the site.
+
+## Screenshots
+
+> *Add 2–4 screenshots here*
 
 ## Tech Stack
 
 - TypeScript
 - Vite
 - Tailwind CSS
-- Netlify Functions (serverless)
-- PostCSS
+- Netlify Functions
 
-## Getting Started
+## Features
 
-### Prerequisites
+- Event details, schedule, and location info
+- RSVP form powered by Netlify Functions
+- Mobile-optimized for guests viewing on their phones
+- Festive, on-theme design
+- Image-optimized for fast loading
 
-- Node.js 18+
-- npm
-
-### Installation
+## Installation
 
 ```bash
 npm install
-```
-
-### Development
-
-```bash
 npm run dev
 ```
 
-### Build
+## Lessons Learned
 
-```bash
-npm run build
-```
+- Event sites have a clear, focused purpose — that constraint makes design decisions easier
+- Netlify Functions are perfect for one-off serverless needs like RSVP collection without a full backend
+- Image optimization (`IMAGE_OPTIMIZATION_COMPLETE.md`) is worth doing even on small projects
 
-## Project Structure
+## Future Improvements
 
-```
-src/                  # Site source (pages, components, styles)
-public/               # Images and static assets
-netlify/functions/    # Serverless functions (RSVP, etc.)
-docs/                 # Documentation
-scripts/              # Utility scripts
-```
-
-## Deployment
-
-Deployed to Netlify on push to `main`. See `netlify.toml` for configuration.
+- This one shipped and served its purpose perfectly. 🎉
 
 ---
 
